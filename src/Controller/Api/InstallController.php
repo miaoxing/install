@@ -96,6 +96,7 @@ class InstallController extends BaseController
                     'port' => $port,
                     'dbname' => $req['dbDbName'],
                     'charset' => 'utf8mb4',
+                    'user' => $req['dbUser'],
                     'password' => $req['dbPassword'],
                     'tablePrefix' => $req['dbTablePrefix'],
                 ],
