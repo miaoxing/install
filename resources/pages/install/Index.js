@@ -31,6 +31,20 @@ export default class extends React.Component {
     e.preventDefault();
   }
 
+  handleSubmit = async (values) => {
+    const ret = await api.curCreate({
+      data: values,
+      loading: true,
+    });
+    if (ret.code !== 1) {
+      $.alert(ret.message);
+      return ;
+    }
+
+    await $.ret(ret);
+    window.location = ret.next;
+  }
+
   render() {
     return <>
       <GlobalStyle/>
@@ -64,15 +78,23 @@ export default class extends React.Component {
           }}
           initialValues={{
             dbHost: 'localhost',
-            dbName: 'miaoxing',
-            dbUsername: 'root',
+            dbDbName: 'miaoxing',
+            dbUser: 'root',
             dbTablePrefix: 'mx_',
-            username: 'admin'
+            username: 'admin',
+
+            //
+            dbHost: 'mysql',
+            dbDbName: 'm' + parseInt(Math.random() * 10000, 10),
+            dbPassword: 'password',
+            password: 'password',
+            agree: true,
           }}
+          onFinish={this.handleSubmit}
         >
           <AFormItem label="数据库地址" name="dbHost" rules={[{required: true}]}/>
-          <AFormItem label="数据库名称" name="dbName" rules={[{required: true}]}/>
-          <AFormItem label="数据库用户名" name="dbUsername" rules={[{required: true}]}/>
+          <AFormItem label="数据库名称" name="dbDbName" rules={[{required: true}]}/>
+          <AFormItem label="数据库用户名" name="dbUser" rules={[{required: true}]}/>
           <AFormItem label="数据库密码" name="dbPassword" rules={[{required: true}]}/>
           <AFormItem label="数据表前缀" name="dbTablePrefix" rules={[{required: true}]}/>
 

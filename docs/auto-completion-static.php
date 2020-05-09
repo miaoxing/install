@@ -10,4 +10,12 @@ class Install extends \Miaoxing\Plugin\BaseService
     public static function isInstalled()
     {
     }
+
+    /**
+     * @return Ret
+     * @see Install::checkInstall
+     */
+    public static function checkInstall()
+    {
+    }
 }
