@@ -1,0 +1,27 @@
+box: miaoxing/build:v0.9.5
+
+services:
+  - id: mysql:5.6
+    env:
+      MYSQL_ROOT_PASSWORD: mypassword
+
+build:
+  steps:
+    - script:
+        name: set github token
+        code: composer config -g github-oauth.github.com $GITHUB_CLONE_TOKEN
+    - mbrevda/composer-install@1.0.1
+    - script:
+        name: wait for mysql connection
+        code: |
+          while ! nc -q 1 $MYSQL_PORT_3306_TCP_ADDR $MYSQL_PORT_3306_TCP_PORT < /dev/null; do sleep 2; done
+    - script:
+        name: check all rules
+        code: |
+          bash vendor/miaoxing/plugin/build/build-wercker.sh --coverage 1
+  after-steps:
+    - miaoxing/github-issue-notify:
+        token: $GITHUB_ISSUE_NOTIFY_TOKEN
+        repo: $GITHUB_ISSUE_NOTIFY_REPO
+        title: "[$(date +%y-%m-%d)]Build failed: %title%"
+        error_file: error.txt
