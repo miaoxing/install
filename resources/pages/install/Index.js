@@ -108,7 +108,9 @@ export default class extends React.Component {
           }}
           onFinish={this.handleSubmit}
         >
-          <AFormItem label="数据库地址" name="dbHost" rules={[{required: true}]}/>
+          <AFormItem label="数据库地址" name="dbHost" rules={[{required: true}]}
+            extra="如果有端口号，使用`:`隔开"
+          />
           <AFormItem label="数据库名称" name="dbDbName" rules={[{required: true}]}/>
           <AFormItem label="数据库用户名" name="dbUser" rules={[{required: true}]}/>
           <AFormItem label="数据库密码" name="dbPassword" rules={[{required: true}]}/>
