@@ -19,6 +19,10 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 export default class extends React.Component {
+  state = {
+    loading: false,
+  }
+
   async componentDidMount() {
     const ret = await api.curPath('installed');
     if (ret.code !== 1) {
@@ -32,7 +36,7 @@ export default class extends React.Component {
     const ret = await api.curPath('license');
     if (ret.code !== 1) {
       $.ret(ret);
-      return ;
+      return;
     }
 
     const index = ret.content.indexOf('\n');
@@ -49,13 +53,15 @@ export default class extends React.Component {
   }
 
   handleSubmit = async (values) => {
+    this.setState({loading: true});
     const ret = await api.curCreate({
       data: values,
       loading: true,
     });
+    this.setState({loading: false});
     if (ret.code !== 1) {
       $.alert(ret.message);
-      return ;
+      return;
     }
 
     await $.ret(ret);
@@ -125,7 +131,7 @@ export default class extends React.Component {
           <Form.Item
             wrapperCol={{offset: 8, span: 8}}
           >
-            <Button type="primary" htmlType="submit" block>
+            <Button type="primary" htmlType="submit" block loading={this.state.loading}>
               安装
             </Button>
           </Form.Item>
