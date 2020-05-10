@@ -13,6 +13,8 @@ use Wei\Password;
 
 class InstallController extends BaseController
 {
+    protected $controllerAuth = false;
+
     public function installedAction()
     {
         return Install::checkInstall();
@@ -112,7 +114,7 @@ class InstallController extends BaseController
 
         return suc([
             'message' => '安装成功',
-            'next' => Url::to('admin'),
+            'next' => Url::to('admin/login'),
         ]);
     }
 }
