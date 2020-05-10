@@ -113,13 +113,13 @@ export default class extends React.Component {
           />
           <AFormItem label="数据库名称" name="dbDbName" rules={[{required: true}]}/>
           <AFormItem label="数据库用户名" name="dbUser" rules={[{required: true}]}/>
-          <AFormItem label="数据库密码" name="dbPassword" rules={[{required: true}]}/>
+          <AFormItem label="数据库密码" name="dbPassword" type="password" rules={[{required: true}]}/>
           <AFormItem label="数据表前缀" name="dbTablePrefix" rules={[{required: true}]}/>
 
           <Divider/>
 
           <AFormItem label="管理员用户名" name="username" rules={[{required: true}]}/>
-          <AFormItem label="管理员密码" name="password" rules={[{required: true}]}/>
+          <AFormItem label="管理员密码" name="password"  type="password" rules={[{required: true}]}/>
 
           <Form.Item
             name="agree"
