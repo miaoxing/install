@@ -99,13 +99,6 @@ export default class extends React.Component {
             dbUser: 'root',
             dbTablePrefix: 'mx_',
             username: 'admin',
-
-            //
-            dbHost: 'mysql',
-            dbDbName: 'm' + parseInt(Math.random() * 10000, 10),
-            dbPassword: 'password',
-            password: 'password',
-            agree: true,
           }}
           onFinish={this.handleSubmit}
         >
@@ -124,7 +117,7 @@ export default class extends React.Component {
             name="agree"
             wrapperCol={{offset: 8, span: 16}}
             valuePropName="checked"
-            rules={[{required: true, message: "请阅读并同意《服务协议》"}]}
+            rules={[{required: true, message: "请阅读并同意《终端用户许可协议》"}]}
           >
             <Checkbox>我已阅读并同意<a href="#" onClick={this.showAgreement}>《终端用户许可协议》</a></Checkbox>
           </Form.Item>
