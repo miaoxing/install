@@ -26,9 +26,26 @@ export default class extends React.Component {
     }
   }
 
-  showAgreement = (e) => {
-    alert('xx');
+  showAgreement = async (e) => {
     e.preventDefault();
+
+    const ret = await api.curPath('license');
+    if (ret.code !== 1) {
+      $.ret(ret);
+      return ;
+    }
+
+    const index = ret.content.indexOf('\n');
+    const title = ret.content.substr(0, index);
+    const content = ret.content.substr(index + 1)
+      .replace(/\n\n/g, "<br/><br/>")
+      .replace(/\n/g, '');
+
+    $.alert({
+      title,
+      content,
+      html: true,
+    });
   }
 
   handleSubmit = async (values) => {
@@ -105,11 +122,11 @@ export default class extends React.Component {
 
           <Form.Item
             name="agree"
-            wrapperCol={{offset: 8, span: 8}}
+            wrapperCol={{offset: 8, span: 16}}
             valuePropName="checked"
             rules={[{required: true, message: "请阅读并同意《服务协议》"}]}
           >
-            <Checkbox>同意<a href="#" onClick={this.showAgreement}>《服务协议》</a></Checkbox>
+            <Checkbox>我已阅读并同意<a href="#" onClick={this.showAgreement}>《终端用户许可协议》</a></Checkbox>
           </Form.Item>
 
           <Form.Item

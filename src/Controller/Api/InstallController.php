@@ -9,7 +9,6 @@ use Miaoxing\Services\Service\Migration;
 use Miaoxing\Services\Service\Time;
 use Miaoxing\Services\Service\Url;
 use Miaoxing\Services\Service\V;
-use Wei\Db;
 use Wei\Password;
 
 class InstallController extends BaseController
@@ -17,6 +16,13 @@ class InstallController extends BaseController
     public function installedAction()
     {
         return Install::checkInstall();
+    }
+
+    public function licenseAction()
+    {
+        return suc([
+            'content' => file_get_contents('LICENSE.txt'),
+        ]);
     }
 
     public function createAction($req)
