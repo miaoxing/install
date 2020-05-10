@@ -43,12 +43,14 @@ class InstallController extends BaseController
             $host = $req['dbHost'];
             $port = null;
         }
-        // NOTE: 不指定数据库，判断不存在则新建
-        $db = new Db([
+
+        $db = wei()->db;
+        $db->setOption([
             'host' => $host,
             'port' => $port,
             'user' => $req['dbUser'],
-            'charset' => 'utf8mb4',
+            // NOTE: 不指定数据库，判断不存在则新建
+            'dbname' => '',
             'password' => $req['dbPassword'],
             'tablePrefix' => $req['dbTablePrefix'],
         ]);
@@ -59,7 +61,7 @@ class InstallController extends BaseController
         }
 
         // 如果数据库不存在，尝试自动创建
-        $databases = array_column($db->fetchAll("SHOW DATABASES"), 'Database');
+        $databases = array_column($db->fetchAll('SHOW DATABASES'), 'Database');
         if (!in_array($req['dbDbName'], $databases)) {
             try {
                 $db->executeUpdate('CREATE DATABASE IF NOT EXISTS ' . $req['dbDbName']);
@@ -68,7 +70,6 @@ class InstallController extends BaseController
             }
         }
         $db->useDb($req['dbDbName']);
-        $this->wei->db = $db;
 
         // 运行
         Migration::migrate();
@@ -76,8 +77,8 @@ class InstallController extends BaseController
         // 插入默认管理员
         UserModel::save([
             'username' => $req['username'],
-            'is_admin' => true,
             'password' => Password::hash($req['password']),
+            'isAdmin' => true,
         ]);
 
         // 3. 逐个安装插件
