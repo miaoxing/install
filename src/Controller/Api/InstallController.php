@@ -40,7 +40,7 @@ class InstallController extends BaseController
             ->key('dbTablePrefix', '数据表前缀')
             ->key('username', '管理员用户名')
             ->key('password', '管理员密码')
-            ->key('agree', '《服务协议》')->required()->message('请同意%name%')
+            ->key('agree', '《终端用户许可协议》')->required()->message('请同意%name%')
             ->check($req);
         $this->tie($ret);
 
@@ -104,7 +104,6 @@ class InstallController extends BaseController
                     'host' => $host,
                     'port' => $port,
                     'dbname' => $req['dbDbName'],
-                    'charset' => 'utf8mb4',
                     'user' => $req['dbUser'],
                     'password' => $req['dbPassword'],
                     'tablePrefix' => $req['dbTablePrefix'],
