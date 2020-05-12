@@ -32,14 +32,12 @@ class Install extends BaseService
     {
         parent::__construct($options);
 
-        $this->env->loadConfigFile('data/configs/install.php');
-
         $this->init();
     }
 
     protected function init()
     {
-        if ($this->isInstalled()) {
+        if (php_sapi_name() === 'cli' || $this->isInstalled()) {
             return;
         }
 

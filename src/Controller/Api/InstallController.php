@@ -4,6 +4,7 @@ namespace Miaoxing\Install\Controller\Api;
 
 use Miaoxing\Install\Service\Install;
 use Miaoxing\Plugin\BaseController;
+use Miaoxing\Plugin\Service\Config;
 use Miaoxing\Plugin\Service\UserModel;
 use Miaoxing\Services\Service\Migration;
 use Miaoxing\Services\Service\Time;
@@ -99,16 +100,14 @@ class InstallController extends BaseController
         }
 
         // 写入配置
-        file_put_contents('data/configs/install.php', "<?php\n\nreturn " . var_export([
-                'db' => [
-                    'host' => $host,
-                    'port' => $port,
-                    'dbname' => $req['dbDbName'],
-                    'user' => $req['dbUser'],
-                    'password' => $req['dbPassword'],
-                    'tablePrefix' => $req['dbTablePrefix'],
-                ],
-            ], true) . ';');
+        Config::save('db', [
+            'host' => $host,
+            'port' => $port,
+            'dbname' => $req['dbDbName'],
+            'user' => $req['dbUser'],
+            'password' => $req['dbPassword'],
+            'tablePrefix' => $req['dbTablePrefix'],
+        ]);
         file_put_contents('data/install.lock', Time::now());
 
         return suc([
