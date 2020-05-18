@@ -13,6 +13,7 @@ use Miaoxing\Plugin\Service\Ret;
  * @mixin \ResponseMixin
  * @mixin \AppMixin
  * @mixin \EnvMixin
+ * @mixin \UrlMixin
  */
 class Install extends BaseService
 {
@@ -26,7 +27,7 @@ class Install extends BaseService
      *
      * @var string
      */
-    protected $installPath = '/install';
+    protected $installUrl = 'install';
 
     public function __construct(array $options = [])
     {
@@ -42,10 +43,11 @@ class Install extends BaseService
         }
 
         // 跳转去安装页面
-        if ($this->request->getPathInfo() !== $this->installPath
-            && strpos($this->request->getPathInfo(), '/api') !== 0
+        $url = $this->url->to($this->installUrl);
+        if ($this->request->getRequestUri() !== $url
+            && strpos($this->request->getRouterPathInfo(), '/api') !== 0
         ) {
-            $this->response->redirect($this->installPath)->send();
+            $this->response->redirect($url)->send();
             return;
         }
 
