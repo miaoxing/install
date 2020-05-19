@@ -100,14 +100,20 @@ class InstallController extends BaseController
         }
 
         // 写入配置
-        Config::save('db', [
-            'host' => $host,
-            'port' => $port,
-            'dbname' => $req['dbDbName'],
-            'user' => $req['dbUser'],
-            'password' => $req['dbPassword'],
-            'tablePrefix' => $req['dbTablePrefix'],
+        Config::save([
+            'db' => [
+                'host' => $host,
+                'port' => $port,
+                'dbname' => $req['dbDbName'],
+                'user' => $req['dbUser'],
+                'password' => $req['dbPassword'],
+                'tablePrefix' => $req['dbTablePrefix'],
+            ],
+            'request' => [
+                'defaultUrlRewrite' => $req['requestDefaultUrlRewrite'],
+            ],
         ]);
+        Config::load();
         file_put_contents('data/install.lock', Time::now());
 
         return suc([

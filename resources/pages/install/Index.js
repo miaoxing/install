@@ -10,6 +10,7 @@ import logo from 'plugins/admin/resources/images/logo.png';
 import {createGlobalStyle} from 'styled-components';
 import api from '@miaoxing/api';
 import {AForm, AFormItem} from '@miaoxing/form';
+import curUrl from '@miaoxing/cur-url';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -23,11 +24,28 @@ export default class extends React.Component {
     loading: false,
   }
 
+  requestDefaultUrlRewrite = false;
+
   async componentDidMount() {
     const ret = await api.curPath('installed');
     if (ret.code !== 1) {
       $.alert(ret.message);
     }
+
+    await this.checkUrlRewrite();
+  }
+
+  async checkUrlRewrite() {
+    $.get({
+      url: 'api/install/installed',
+      ignoreError: true,
+    }).then(ret => {
+      if (ret && ret.code === 1) {
+        this.requestDefaultUrlRewrite = true;
+      }
+    }).catch(e => {
+      // Ignore error
+    });
   }
 
   showAgreement = async (e) => {
@@ -54,6 +72,9 @@ export default class extends React.Component {
 
   handleSubmit = async (values) => {
     this.setState({loading: true});
+
+    values.requestDefaultUrlRewrite = this.requestDefaultUrlRewrite;
+
     const ret = await api.curCreate({
       data: values,
       loading: true,
@@ -119,7 +140,7 @@ export default class extends React.Component {
           <Divider/>
 
           <AFormItem label="管理员用户名" name="username" rules={[{required: true}]}/>
-          <AFormItem label="管理员密码" name="password"  type="password" rules={[{required: true}]}/>
+          <AFormItem label="管理员密码" name="password" type="password" rules={[{required: true}]}/>
 
           <Form.Item
             name="agree"
