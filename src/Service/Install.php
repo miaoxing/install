@@ -55,6 +55,7 @@ class Install extends BaseService
         $this->app->setNamespace('app');
         $this->app->setModel(AppModel::new([
             'id' => 1,
+            'name' => 'app',
             'plugin_ids' => [
                 'app',
             ],
