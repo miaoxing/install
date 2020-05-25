@@ -2,15 +2,13 @@
  * @layout false
  */
 import React from "react";
-import {Button, Checkbox, Divider, Form, Input} from "antd";
+import {Button, Checkbox, Divider} from "antd";
 import {Box, Heading, Image} from 'rebass/styled-components';
 import $ from 'miaoxing';
-import app from '@miaoxing/app';
 import logo from 'plugins/admin/resources/images/logo.png';
 import {createGlobalStyle} from 'styled-components';
 import api from '@miaoxing/api';
-import {AForm, AFormItem} from '@miaoxing/form';
-import curUrl from '@miaoxing/cur-url';
+import {Form, FormItem} from '@miaoxing/a-form';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -114,7 +112,7 @@ export default class extends React.Component {
         >
           安装
         </Heading>
-        <AForm
+        <Form
           labelCol={{span: 8}}
           wrapperCol={{span: 8}}
           validateMessages={{
@@ -129,18 +127,18 @@ export default class extends React.Component {
           }}
           onFinish={this.handleSubmit}
         >
-          <AFormItem label="数据库地址" name="dbHost" rules={[{required: true}]}
+          <FormItem label="数据库地址" name="dbHost" rules={[{required: true}]}
             extra="如果有端口号，使用`:`隔开"
           />
-          <AFormItem label="数据库名称" name="dbDbName" rules={[{required: true}]}/>
-          <AFormItem label="数据库用户名" name="dbUser" rules={[{required: true}]}/>
-          <AFormItem label="数据库密码" name="dbPassword" type="password" rules={[{required: true}]}/>
-          <AFormItem label="数据表前缀" name="dbTablePrefix" rules={[{required: true}]}/>
+          <FormItem label="数据库名称" name="dbDbName" rules={[{required: true}]}/>
+          <FormItem label="数据库用户名" name="dbUser" rules={[{required: true}]}/>
+          <FormItem label="数据库密码" name="dbPassword" type="password" rules={[{required: true}]}/>
+          <FormItem label="数据表前缀" name="dbTablePrefix" rules={[{required: true}]}/>
 
           <Divider/>
 
-          <AFormItem label="管理员用户名" name="username" rules={[{required: true}]}/>
-          <AFormItem label="管理员密码" name="password" type="password" rules={[{required: true}]}/>
+          <FormItem label="管理员用户名" name="username" rules={[{required: true}]}/>
+          <FormItem label="管理员密码" name="password" type="password" rules={[{required: true}]}/>
 
           <Form.Item
             name="agree"
@@ -158,7 +156,7 @@ export default class extends React.Component {
               安装
             </Button>
           </Form.Item>
-        </AForm>
+        </Form>
       </Box>
     </>;
   }
