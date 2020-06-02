@@ -5,7 +5,7 @@ import React from "react";
 import {Form, Button, Checkbox, Divider} from "antd";
 import {Box, Heading, Image} from 'rebass';
 import $ from 'miaoxing';
-import logo from 'plugins/admin/resources/images/logo.png';
+import logo from 'plugins/admin/images/logo.png';
 import api from '@miaoxing/api';
 import {FormItem} from '@miaoxing/a-form';
 import {css, Global} from '@emotion/core';
