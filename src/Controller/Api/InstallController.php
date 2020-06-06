@@ -12,6 +12,9 @@ use Miaoxing\Services\Service\Url;
 use Miaoxing\Services\Service\V;
 use Wei\Password;
 
+/**
+ * @mixin \SchemaMixin
+ */
 class InstallController extends BaseController
 {
     protected $controllerAuth = false;
@@ -79,6 +82,11 @@ class InstallController extends BaseController
             }
         }
         $db->useDb($req['dbDbName']);
+
+        // 避免直接删除 install.lock 后重新安装错误
+        if ($this->schema->hasTable('migrations')) {
+            return err(['数据表 %s 已存在，不能安装', $db->getTable('migrations')]);
+        }
 
         // 运行
         Migration::migrate();
