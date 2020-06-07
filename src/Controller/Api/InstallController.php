@@ -2,10 +2,12 @@
 
 namespace Miaoxing\Install\Controller\Api;
 
+use Illuminate\Support\Facades\Log;
 use Miaoxing\Install\Service\Install;
 use Miaoxing\Plugin\BaseController;
 use Miaoxing\Plugin\Service\Config;
 use Miaoxing\Plugin\Service\UserModel;
+use Miaoxing\Services\Service\Laravel;
 use Miaoxing\Services\Service\Migration;
 use Miaoxing\Services\Service\Time;
 use Miaoxing\Services\Service\Url;
@@ -21,6 +23,11 @@ class InstallController extends BaseController
 
     public function installedAction()
     {
+        Laravel::bootstrap();
+        Log::debug('xx');
+
+        echo 123;
+
         return Install::checkInstall();
     }
 
@@ -122,7 +129,7 @@ class InstallController extends BaseController
             ],
         ]);
         Config::load();
-        file_put_contents('data/install.lock', Time::now());
+        file_put_contents('storage/install.lock', Time::now());
 
         return suc([
             'message' => '安装成功',

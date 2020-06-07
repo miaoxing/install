@@ -20,7 +20,7 @@ class Install extends BaseService
     /**
      * @var string
      */
-    protected $lockFile = 'data/install.lock';
+    protected $lockFile = 'storage/install.lock';
 
     /**
      * 安装页面所在的路径
