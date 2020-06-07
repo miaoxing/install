@@ -7,7 +7,6 @@ use Miaoxing\Install\Service\Install;
 use Miaoxing\Plugin\BaseController;
 use Miaoxing\Plugin\Service\Config;
 use Miaoxing\Plugin\Service\UserModel;
-use Miaoxing\Services\Service\Laravel;
 use Miaoxing\Services\Service\Migration;
 use Miaoxing\Services\Service\Time;
 use Miaoxing\Services\Service\Url;
@@ -23,11 +22,6 @@ class InstallController extends BaseController
 
     public function installedAction()
     {
-        Laravel::bootstrap();
-        Log::debug('xx');
-
-        echo 123;
-
         return Install::checkInstall();
     }
 
