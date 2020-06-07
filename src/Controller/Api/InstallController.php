@@ -2,7 +2,6 @@
 
 namespace Miaoxing\Install\Controller\Api;
 
-use Illuminate\Support\Facades\Log;
 use Miaoxing\Install\Service\Install;
 use Miaoxing\Plugin\BaseController;
 use Miaoxing\Plugin\Service\Config;
