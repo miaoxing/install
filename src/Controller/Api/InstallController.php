@@ -9,7 +9,7 @@ use Miaoxing\Plugin\Service\UserModel;
 use Wei\Migration;
 use Wei\Time;
 use Miaoxing\Services\Service\Url;
-use Miaoxing\Services\Service\V;
+use Wei\V;
 use Wei\Password;
 
 /**
