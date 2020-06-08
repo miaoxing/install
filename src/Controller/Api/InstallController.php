@@ -7,7 +7,7 @@ use Miaoxing\Plugin\BaseController;
 use Miaoxing\Plugin\Service\Config;
 use Miaoxing\Plugin\Service\UserModel;
 use Miaoxing\Services\Service\Migration;
-use Miaoxing\Services\Service\Time;
+use Wei\Time;
 use Miaoxing\Services\Service\Url;
 use Miaoxing\Services\Service\V;
 use Wei\Password;
