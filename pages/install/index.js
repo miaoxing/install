@@ -10,7 +10,7 @@ import api from '@miaoxing/api';
 import {FormItem} from '@miaoxing/a-form';
 import {css, Global} from '@emotion/core';
 
-export default class extends React.Component {
+export default class InstallIndex extends React.Component {
   state = {
     loading: false,
   }
@@ -34,7 +34,7 @@ export default class extends React.Component {
       if (ret && ret.code === 1) {
         this.requestDefaultUrlRewrite = true;
       }
-    }).catch(e => {
+    }).catch(() => {
       // Ignore error
     });
   }
