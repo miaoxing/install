@@ -3,14 +3,16 @@
   "type": "miaoxing-plugin",
   "description": "Miaoxing Install Plugin",
   "keywords": [
-    "miaoxing", "install"
+    "miaoxing",
+    "install"
   ],
   "license": "MIT",
   "require": {
-    "miaoxing/plugin": "dev-master@dev"
+    "miaoxing/plugin": "dev-master@dev",
+    "miaoxing/services": "dev-master@dev"
   },
   "require-dev": {
-    "miaoxing/coding-standards": "^2.0.0"
+    "miaoxing/coding-standards": "^4.1.1"
   },
   "autoload": {
     "psr-4": {
@@ -25,6 +27,14 @@
   "minimum-stability": "dev",
   "prefer-stable": true,
   "extra": {
+    "installer-types": [
+      "miaoxing-plugin"
+    ],
+    "installer-paths": {
+      "plugins/{$name}/": [
+        "type:miaoxing-plugin"
+      ]
+    },
     "branch-alias": {
       "dev-master": "2.0.x-dev"
     }
