@@ -5,7 +5,10 @@ namespace MiaoxingTest\Install\Service;
 use Miaoxing\Install\Service\Install;
 use Miaoxing\Plugin\Test\BaseTestCase;
 
-class InstallTest extends BaseTestCase
+/**
+ * @internal
+ */
+final class InstallTest extends BaseTestCase
 {
     public function testIsInstalled()
     {
