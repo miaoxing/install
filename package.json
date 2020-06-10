@@ -1,0 +1,11 @@
+{
+  "name": "install",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:miaoxing/install.git",
+  "author": "twinh <twinhuang@qq.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "miaoxing-coding-standards": "^4.1.1"
+  }
+}

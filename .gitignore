@@ -1,3 +1,23 @@
+.idea/
+
+# js
+/node_modules/
+/yarn.lock
+/yarn-error.log
+
+# typescript
+/dist/
+
+# coveralls
+/coverage/
+
+# php
+.php_cs.cache
 vendor/
 composer.lock
 phpunit.xml
+
+# miaoxing
+/plugins/
+/storage/
+/tests/config-local.php

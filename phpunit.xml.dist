@@ -3,7 +3,7 @@
 <phpunit backupGlobals="false"
          colors="true"
          stderr="true"
-         bootstrap="vendor/miaoxing/plugin/tests/bootstrap.php"
+         bootstrap="plugins/plugin/tests/bootstrap.php"
 >
 
   <testsuites>
