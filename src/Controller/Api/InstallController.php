@@ -6,11 +6,11 @@ use Miaoxing\Install\Service\Install;
 use Miaoxing\Plugin\BaseController;
 use Miaoxing\Plugin\Service\Config;
 use Miaoxing\Plugin\Service\UserModel;
-use Wei\Migration;
-use Wei\Time;
 use Miaoxing\Services\Service\Url;
-use Wei\V;
+use Wei\Migration;
 use Wei\Password;
+use Wei\Time;
+use Wei\V;
 
 /**
  * @mixin \SchemaMixin
@@ -49,7 +49,7 @@ class InstallController extends BaseController
         $this->tie($ret);
 
         // 2. 检查数据库连接
-        if (strpos($req['dbHost'], ':') !== false) {
+        if (false !== strpos($req['dbHost'], ':')) {
             [$host, $port] = explode(':', $req['dbHost']);
         } else {
             $host = $req['dbHost'];
@@ -74,7 +74,7 @@ class InstallController extends BaseController
 
         // 如果数据库不存在，尝试自动创建
         $databases = array_column($db->fetchAll('SHOW DATABASES'), 'Database');
-        if (!in_array($req['dbDbName'], $databases)) {
+        if (!in_array($req['dbDbName'], $databases, true)) {
             try {
                 $db->executeUpdate('CREATE DATABASE IF NOT EXISTS ' . $req['dbDbName']);
             } catch (\Exception $e) {
@@ -102,7 +102,7 @@ class InstallController extends BaseController
         $rets = [];
         foreach ($this->plugin->getAll() as $plugin) {
             $ret = $this->plugin->install($plugin->getId());
-            if ($ret['code'] !== 1) {
+            if (1 !== $ret['code']) {
                 $rets[] = $ret;
             }
         }

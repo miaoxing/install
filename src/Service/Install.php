@@ -38,14 +38,14 @@ class Install extends BaseService
 
     protected function init()
     {
-        if (php_sapi_name() === 'cli' || $this->isInstalled()) {
+        if (\PHP_SAPI === 'cli' || $this->isInstalled()) {
             return;
         }
 
         // 跳转去安装页面
         $url = $this->url->to($this->installUrl);
         if ($this->request->getRequestUri() !== $url
-            && strpos($this->request->getRouterPathInfo(), '/api') !== 0
+            && 0 !== strpos($this->request->getRouterPathInfo(), '/api')
         ) {
             $this->response->redirect($url)->send();
             return;
