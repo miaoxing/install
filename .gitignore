@@ -2,20 +2,17 @@
 
 # js
 /node_modules/
+/dist/
+/coverage/
 /yarn.lock
 /yarn-error.log
 
-# typescript
-/dist/
-
-# coveralls
-/coverage/
-
 # php
-.php_cs.cache
-vendor/
+/vendor/
 composer.lock
 phpunit.xml
+.php_cs.cache
+.phpunit.result.cache
 
 # miaoxing
 /plugins/
