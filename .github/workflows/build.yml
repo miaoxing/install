@@ -115,8 +115,7 @@ jobs:
         run: yarn install
 
       - name: Run
-        run: |
-          yarn jest --passWithNoTests --coverage --coverageReporters text lcovonly
+        run: yarn miaoxing-jest
 
       - name: Coveralls
         if: startsWith(hashFiles('coverage/lcov.info'), '5df6e0e27613') == false
