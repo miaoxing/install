@@ -14,7 +14,13 @@ phpunit.xml
 .php_cs.cache
 .phpunit.result.cache
 
+# php-coveralls
+/build/logs/clover.xml
+
 # miaoxing
 /plugins/
 /storage/
 /tests/config-local.php
+
+# wei
+/log/

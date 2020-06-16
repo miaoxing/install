@@ -6,6 +6,6 @@
   "author": "twinh <twinhuang@qq.com>",
   "license": "MIT",
   "devDependencies": {
-    "miaoxing-coding-standards": "^5.0.0-beta.5"
+    "miaoxing-coding-standards": "^5.0.0-beta.7"
   }
 }
