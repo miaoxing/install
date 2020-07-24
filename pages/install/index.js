@@ -6,7 +6,7 @@ import {Form, Button, Checkbox, Divider} from "antd";
 import {Box, Heading, Image} from 'rebass';
 import $ from 'miaoxing';
 import logo from 'plugins/admin/images/logo.png';
-import api from '@miaoxing/api';
+import http from '@miaoxing/http';
 import {FormItem} from '@miaoxing/a-form';
 import {css, Global} from '@emotion/core';
 
@@ -18,7 +18,7 @@ export default class InstallIndex extends React.Component {
   requestDefaultUrlRewrite = false;
 
   async componentDidMount() {
-    const ret = await api.curPath('installed');
+    const ret = await http.curPath('installed');
     if (ret.code !== 1) {
       $.alert(ret.message);
     }
@@ -42,7 +42,7 @@ export default class InstallIndex extends React.Component {
   showAgreement = async (e) => {
     e.preventDefault();
 
-    const ret = await api.curPath('license');
+    const ret = await http.curPath('license');
     if (ret.code !== 1) {
       $.ret(ret);
       return;
@@ -66,7 +66,7 @@ export default class InstallIndex extends React.Component {
 
     values.requestDefaultUrlRewrite = this.requestDefaultUrlRewrite;
 
-    const ret = await api.curCreate({
+    const ret = await http.curCreate({
       data: values,
       loading: true,
     });
