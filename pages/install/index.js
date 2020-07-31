@@ -6,8 +6,8 @@ import {Form, Button, Checkbox, Divider} from "antd";
 import {Box, Heading, Image} from 'rebass';
 import $ from 'miaoxing';
 import logo from 'plugins/admin/images/logo.png';
-import http from '@miaoxing/http';
-import {FormItem} from '@miaoxing/a-form';
+import http from '@mxjs/http';
+import {FormItem} from '@mxjs/a-form';
 import {css, Global} from '@emotion/core';
 
 export default class InstallIndex extends React.Component {
