@@ -9,7 +9,7 @@ use Miaoxing\Plugin\Service\Ret;
 /**
  * Install
  *
- * @mixin \RequestMixin
+ * @mixin \ReqMixin
  * @mixin \ResponseMixin
  * @mixin \AppMixin
  * @mixin \EnvMixin
@@ -44,8 +44,8 @@ class Install extends BaseService
 
         // 跳转去安装页面
         $url = $this->url->to($this->installUrl);
-        if ($this->request->getRequestUri() !== $url
-            && 0 !== strpos($this->request->getRouterPathInfo(), '/api')
+        if ($this->req->getRequestUri() !== $url
+            && 0 !== strpos($this->req->getRouterPathInfo(), '/api')
         ) {
             $this->response->redirect($url)->send();
             return;
