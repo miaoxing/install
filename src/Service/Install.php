@@ -47,7 +47,7 @@ class Install extends BaseService
         if ($this->req->getRequestUri() !== $url
             && 0 !== strpos($this->req->getRouterPathInfo(), '/api')
         ) {
-            $this->response->redirect($url)->send();
+            $this->res->redirect($url)->send();
             return;
         }
 
