@@ -1,3 +1,14 @@
+## [0.1.3](https://github.com/miaoxing/install/compare/v0.1.2...v0.1.3) (2020-08-07)
+
+
+
+
+
+### Dependencies
+
+* **@miaoxing/plugin:** upgrade from 0.1.2 to 0.1.3
+* **@miaoxing/services:** upgrade from 0.1.2 to 0.1.3
+
 ## [0.1.2](https://github.com/miaoxing/install/compare/v0.1.1...v0.1.2) (2020-08-06)
 
 
