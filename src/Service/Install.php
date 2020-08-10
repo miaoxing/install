@@ -10,7 +10,7 @@ use Miaoxing\Plugin\Service\Ret;
  * Install
  *
  * @mixin \ReqMixin
- * @mixin \ResponseMixin
+ * @mixin \ResMixin
  * @mixin \AppMixin
  * @mixin \EnvMixin
  * @mixin \UrlMixin
@@ -48,7 +48,7 @@ class Install extends BaseService
             && 0 !== strpos($this->req->getRouterPathInfo(), '/api')
         ) {
             $this->res->redirect($url)->send();
-            return;
+            return $this->exit();
         }
 
         // 初始化安装信息
@@ -88,5 +88,10 @@ class Install extends BaseService
             return err('程序已安装过，如需重新安装，请手动删除 ' . $this->lockFile);
         }
         return suc();
+    }
+
+    protected function exit()
+    {
+        exit;
     }
 }
