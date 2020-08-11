@@ -1,3 +1,19 @@
+## [0.1.4](https://github.com/miaoxing/install/compare/v0.1.3...v0.1.4) (2020-08-11)
+
+
+### Features
+
+* 允许在通过 composer.json 配置预加载的服务 ([922a323](https://github.com/miaoxing/install/commit/922a323f83f25c3b00636ae753971de495833811))
+
+
+
+
+
+### Dependencies
+
+* **@miaoxing/plugin:** upgrade from 0.1.3 to 0.1.4
+* **@miaoxing/services:** upgrade from 0.1.3 to 0.1.4
+
 ## [0.1.3](https://github.com/miaoxing/install/compare/v0.1.2...v0.1.3) (2020-08-07)
 
 
