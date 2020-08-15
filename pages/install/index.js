@@ -1,8 +1,8 @@
 /**
  * @layout false
  */
-import React from "react";
-import {Form, Button, Checkbox, Divider} from "antd";
+import React from 'react';
+import {Form, Button, Checkbox, Divider} from 'antd';
 import {Box, Heading, Image} from 'rebass';
 import $ from 'miaoxing';
 import logo from 'plugins/admin/images/logo.png';
@@ -51,7 +51,7 @@ export default class InstallIndex extends React.Component {
     const index = ret.content.indexOf('\n');
     const title = ret.content.substr(0, index);
     const content = ret.content.substr(index + 1)
-      .replace(/\n\n/g, "<br/><br/>")
+      .replace(/\n\n/g, '<br/><br/>')
       .replace(/\n/g, '');
 
     $.alert({
@@ -144,7 +144,7 @@ export default class InstallIndex extends React.Component {
             name="agree"
             wrapperCol={{offset: 8, span: 16}}
             valuePropName="checked"
-            rules={[{required: true, message: "请阅读并同意《终端用户许可协议》"}]}
+            rules={[{required: true, message: '请阅读并同意《终端用户许可协议》'}]}
           >
             <Checkbox>我已阅读并同意<a href="#" onClick={this.showAgreement}>《终端用户许可协议》</a></Checkbox>
           </Form.Item>
