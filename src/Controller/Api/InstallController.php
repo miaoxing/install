@@ -69,7 +69,7 @@ class InstallController extends BaseController
         try {
             $db->connect();
         } catch (\Exception $e) {
-            return err('连接数据库失败：' . $e->getMessage());
+            return err(['连接数据库失败：%s', $e->getMessage()]);
         }
 
         // 如果数据库不存在，尝试自动创建
@@ -78,7 +78,7 @@ class InstallController extends BaseController
             try {
                 $db->executeUpdate('CREATE DATABASE IF NOT EXISTS ' . $req['dbDbName']);
             } catch (\Exception $e) {
-                return err('创建数据库失败，请手动创建：' . $e->getMessage());
+                return err(['创建数据库失败，请手动创建：%s', $e->getMessage()]);
             }
         }
         $db->useDb($req['dbDbName']);

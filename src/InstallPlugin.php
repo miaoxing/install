@@ -10,4 +10,9 @@ class InstallPlugin extends BasePlugin
      * {@inheritdoc}
      */
     protected $name = '安装程序';
+
+    /**
+     * {@inheritdoc}
+     */
+    protected $code = 205;
 }

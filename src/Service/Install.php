@@ -85,7 +85,7 @@ class Install extends BaseService
     protected function checkInstall()
     {
         if ($this->isInstalled()) {
-            return err('程序已安装过，如需重新安装，请手动删除 ' . $this->lockFile);
+            return err(['程序已安装过，如需重新安装，请手动删除：%s', $this->lockFile]);
         }
         return suc();
     }
