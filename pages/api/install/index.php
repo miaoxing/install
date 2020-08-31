@@ -1,7 +1,5 @@
 <?php
 
-namespace Miaoxing\Install\Controller\Api;
-
 use Miaoxing\Install\Service\Install;
 use Miaoxing\Plugin\BaseController;
 use Miaoxing\Plugin\Service\Config;
@@ -12,26 +10,22 @@ use Wei\Password;
 use Wei\Time;
 use Wei\V;
 
+return new
 /**
- * @mixin \SchemaMixin
+ * @mixin SchemaMixin
  */
-class InstallController extends BaseController
-{
-    protected $controllerAuth = false;
-
-    public function installedAction()
-    {
-        return Install::checkInstall();
-    }
-
-    public function licenseAction()
+class extends BaseController {
+    public function get()
     {
         return suc([
-            'content' => file_get_contents('LICENSE.txt'),
+            'data' => [
+                'installRet' => Install::checkInstall(),
+                'license' => file_get_contents('LICENSE.txt'),
+            ],
         ]);
     }
 
-    public function createAction($req)
+    public function post($req)
     {
         // 1. 检查是否已安装
         $ret = Install::checkInstall();
@@ -129,4 +123,4 @@ class InstallController extends BaseController
             'next' => Url::to('admin/login'),
         ]);
     }
-}
+};
