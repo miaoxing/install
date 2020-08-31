@@ -13,14 +13,17 @@ import {css, Global} from '@emotion/core';
 export default class InstallIndex extends React.Component {
   state = {
     loading: false,
+    data: {}
   }
 
   requestDefaultUrlRewrite = false;
 
   async componentDidMount() {
-    const ret = await http.curPath('installed');
-    if (ret.code !== 1) {
-      $.alert(ret.message);
+    const ret = await http.getCur();
+    this.setState({data: ret.data});
+
+    if (ret.data.installRet.code !== 1) {
+      $.alert(ret.data.installRet.message);
     }
 
     await this.checkUrlRewrite();
@@ -28,7 +31,7 @@ export default class InstallIndex extends React.Component {
 
   async checkUrlRewrite() {
     $.get({
-      url: 'api/install/installed',
+      url: 'api/install',
       ignoreError: true,
     }).then(ret => {
       if (ret && ret.code === 1) {
@@ -42,15 +45,10 @@ export default class InstallIndex extends React.Component {
   showAgreement = async (e) => {
     e.preventDefault();
 
-    const ret = await http.curPath('license');
-    if (ret.code !== 1) {
-      $.ret(ret);
-      return;
-    }
-
-    const index = ret.content.indexOf('\n');
-    const title = ret.content.substr(0, index);
-    const content = ret.content.substr(index + 1)
+    const license = this.state.data.license;
+    const index = license.indexOf('\n');
+    const title = license.substr(0, index);
+    const content = license.substr(index + 1)
       .replace(/\n\n/g, '<br/><br/>')
       .replace(/\n/g, '');
 
@@ -66,9 +64,11 @@ export default class InstallIndex extends React.Component {
 
     values.requestDefaultUrlRewrite = this.requestDefaultUrlRewrite;
 
-    const ret = await http.curCreate({
+    const ret = await http.postCur({
       data: values,
       loading: true,
+    }).catch(() => {
+      this.setState({loading: false});
     });
     this.setState({loading: false});
     if (ret.code !== 1) {
