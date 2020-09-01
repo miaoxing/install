@@ -6,7 +6,7 @@ import {Form, Button, Checkbox, Divider} from 'antd';
 import {Box, Heading, Image} from 'rebass';
 import $ from 'miaoxing';
 import logo from 'plugins/admin/images/logo.png';
-import http from '@mxjs/http';
+import api from '@mxjs/api';
 import {FormItem} from '@mxjs/a-form';
 import {css, Global} from '@emotion/core';
 
@@ -19,7 +19,7 @@ export default class InstallIndex extends React.Component {
   requestDefaultUrlRewrite = false;
 
   async componentDidMount() {
-    const ret = await http.getCur();
+    const ret = await api.getCur();
     this.setState({data: ret.data});
 
     if (ret.data.installRet.code !== 1) {
@@ -64,7 +64,7 @@ export default class InstallIndex extends React.Component {
 
     values.requestDefaultUrlRewrite = this.requestDefaultUrlRewrite;
 
-    const ret = await http.postCur({
+    const ret = await api.postCur({
       data: values,
       loading: true,
     }).catch(() => {
