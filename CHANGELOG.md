@@ -1,3 +1,19 @@
+## [0.2.2](https://github.com/miaoxing/install/compare/v0.2.1...v0.2.2) (2020-09-06)
+
+
+### Features
+
+* 安装时生成 jwt 所需的 RSA 密钥对 ([ee7b8cc](https://github.com/miaoxing/install/commit/ee7b8cccb017cf71c28bf67e7f055e3f551b0c93))
+
+
+
+
+
+### Dependencies
+
+* **@miaoxing/plugin:** upgrade from 0.2.1 to 0.2.2
+* **@miaoxing/services:** upgrade from 0.2.1 to 0.2.2
+
 ## [0.2.1](https://github.com/miaoxing/install/compare/v0.2.0...v0.2.1) (2020-09-01)
 
 
