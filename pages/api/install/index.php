@@ -3,6 +3,7 @@
 use Miaoxing\Install\Service\Install;
 use Miaoxing\Plugin\BaseController;
 use Miaoxing\Plugin\Service\Config;
+use Miaoxing\Plugin\Service\Jwt;
 use Miaoxing\Plugin\Service\UserModel;
 use Miaoxing\Services\Service\Url;
 use Wei\Migration;
@@ -15,6 +16,8 @@ return new
  * @mixin SchemaMixin
  */
 class extends BaseController {
+    protected $controllerAuth = false;
+
     public function get()
     {
         return suc([
@@ -82,7 +85,9 @@ class extends BaseController {
             return err(['数据表 %s 已存在，不能安装', $db->getTable('migrations')]);
         }
 
-        // 运行
+        $ret = Jwt::generateDefaultKeys();
+        $this->tie($ret);
+
         Migration::migrate();
 
         // 插入默认管理员
