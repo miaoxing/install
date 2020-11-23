@@ -9,6 +9,7 @@ import logo from 'plugins/admin/images/logo.png';
 import api from '@mxjs/api';
 import {FormItem} from '@mxjs/a-form';
 import {css, Global} from '@emotion/core';
+import {Ret} from 'miaoxing';
 
 export default class InstallIndex extends React.Component {
   state = {
@@ -22,7 +23,7 @@ export default class InstallIndex extends React.Component {
     const ret = await api.getCur();
     this.setState({data: ret.data});
 
-    if (ret.data.installRet.code !== 1) {
+    if (new Ret(ret.data.installRet).isErr()) {
       $.alert(ret.data.installRet.message);
     }
 
@@ -34,7 +35,7 @@ export default class InstallIndex extends React.Component {
       url: 'api/install',
       ignoreError: true,
     }).then(ret => {
-      if (ret && ret.code === 1) {
+      if (ret && ret.isSuc()) {
         this.requestDefaultUrlRewrite = true;
       }
     }).catch(() => {
@@ -71,7 +72,7 @@ export default class InstallIndex extends React.Component {
       this.setState({loading: false});
     });
     this.setState({loading: false});
-    if (ret.code !== 1) {
+    if (ret.code !== 0) {
       $.alert(ret.message);
       return;
     }
