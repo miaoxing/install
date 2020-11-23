@@ -23,7 +23,7 @@ export default class InstallIndex extends React.Component {
     const ret = await api.getCur();
     this.setState({data: ret.data});
 
-    if (new Ret(ret.data.installRet).isErr()) {
+    if (Ret.new(ret.data.installRet).isErr()) {
       $.alert(ret.data.installRet.message);
     }
 
