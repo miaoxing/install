@@ -1,5 +1,6 @@
 <?php
 
+use Miaoxing\Admin\Service\AdminModel;
 use Miaoxing\Install\Service\Install;
 use Miaoxing\Plugin\BaseController;
 use Miaoxing\Plugin\Service\Config;
@@ -91,11 +92,12 @@ class extends BaseController {
         Migration::migrate();
 
         // 插入默认管理员
-        UserModel::save([
+        $user = UserModel::saveAttributes([
             'username' => $req['username'],
             'password' => Password::hash($req['password']),
             'isAdmin' => true,
         ]);
+        AdminModel::save(['userId' => $user->id]);
 
         // 3. 逐个安装插件
         $rets = [];
