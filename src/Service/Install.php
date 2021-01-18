@@ -56,16 +56,17 @@ class Install extends BaseService
         $this->app->setModel(AppModel::new([
             'id' => 1,
             'name' => 'app',
-            'plugin_ids' => [
+            'pluginIds' => [
                 'app',
             ],
         ], [
             // IMPORT 当前是初始化流程，需要明确传入 wei 对象，才不会自动生成一个新的 wei 对象
             'wei' => $this->wei,
-            'fields' => [
-                'id',
-                'name',
-                'plugin_ids',
+            'loadedColumns' => true,
+            'columns' => [
+                'id' => [],
+                'name' => [],
+                'pluginIds' => [],
             ],
         ]));
     }
