@@ -52,7 +52,7 @@ class Install extends BaseService
         }
 
         // 初始化安装信息
-        $this->app->setNamespace('app');
+        $this->app->setId(1);
         $this->app->setModel(AppModel::new([
             'id' => 1,
             'name' => 'app',
@@ -66,7 +66,9 @@ class Install extends BaseService
             'columns' => [
                 'id' => [],
                 'name' => [],
-                'pluginIds' => [],
+                'pluginIds' => [
+                    'cast' => 'list',
+                ],
             ],
         ]));
     }
