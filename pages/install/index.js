@@ -5,7 +5,6 @@ import React from 'react';
 import {Form, Button, Checkbox, Divider} from 'antd';
 import {Box, Heading, Image} from 'rebass';
 import $ from 'miaoxing';
-import logo from 'plugins/admin/images/logo.png';
 import api from '@mxjs/api';
 import {FormItem} from '@mxjs/a-form';
 import {css, Global} from '@emotion/core';
@@ -102,7 +101,7 @@ export default class InstallIndex extends React.Component {
           mb={4}
           textAlign="center"
         >
-          <Image height={30} src={logo}/>
+          <Image height={30} src={$.url('images/logo.svg')}/>
         </Box>
         <Heading
           mb={5}
