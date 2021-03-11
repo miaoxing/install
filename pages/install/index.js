@@ -13,7 +13,7 @@ import {Ret} from 'miaoxing';
 export default class InstallIndex extends React.Component {
   state = {
     loading: false,
-    data: {}
+    data: {},
   }
 
   requestDefaultUrlRewrite = false;

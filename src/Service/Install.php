@@ -93,6 +93,9 @@ class Install extends BaseService
         return suc();
     }
 
+    /**
+     * @SuppressWarnings(PHPMD.ExitExpression)
+     */
     protected function exit()
     {
         exit;
