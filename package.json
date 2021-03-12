@@ -1,12 +1,12 @@
 {
   "name": "@miaoxing/install",
-  "version": "0.2.10",
+  "version": "0.2.11",
   "private": true,
   "main": "index.js",
   "repository": "git@github.com:miaoxing/install.git",
   "author": "twinh <twinhuang@qq.com>",
   "license": "MIT",
   "devDependencies": {
-    "@miaoxing/dev": "^6.3.2"
+    "@miaoxing/dev": "^6.3.3"
   }
 }
