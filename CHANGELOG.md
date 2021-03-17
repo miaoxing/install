@@ -1,3 +1,13 @@
+## [0.2.12](https://github.com/miaoxing/install/compare/v0.2.11...v0.2.12) (2021-03-17)
+
+
+
+
+
+### Dependencies
+
+* **@miaoxing/services:** upgrade from `0.3.6` to `0.3.7`
+
 ## [0.2.11](https://github.com/miaoxing/install/compare/v0.2.10...v0.2.11) (2021-03-12)
 
 

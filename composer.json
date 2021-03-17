@@ -9,7 +9,7 @@
   "license": "MIT",
   "require": {
     "miaoxing/plugin": "^0.4.2",
-    "miaoxing/services": "^0.3.6"
+    "miaoxing/services": "^0.3.7"
   },
   "require-dev": {
     "miaoxing/dev": "^6.3.3"
