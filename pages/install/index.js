@@ -3,11 +3,11 @@
  */
 import React from 'react';
 import {Form, Button, Checkbox, Divider} from 'antd';
-import {Box, Heading, Image} from 'rebass';
+import {Box, Heading, Image} from '@mxjs/box';
 import $ from 'miaoxing';
 import api from '@mxjs/api';
 import {FormItem} from '@mxjs/a-form';
-import {css, Global} from '@emotion/core';
+import {css, Global} from '@emotion/react';
 import {Ret} from 'miaoxing';
 
 export default class InstallIndex extends React.Component {
