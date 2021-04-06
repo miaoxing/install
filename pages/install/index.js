@@ -93,8 +93,8 @@ export default class InstallIndex extends React.Component {
       <Box
         width={700}
         mx="auto"
-        mt={5}
-        p={5}
+        mt={12}
+        p={12}
         bg="white"
       >
         <Box
@@ -104,9 +104,9 @@ export default class InstallIndex extends React.Component {
           <Image height={30} src={$.url('images/logo.svg')}/>
         </Box>
         <Heading
-          mb={5}
+          mb={12}
           textAlign="center"
-          fontSize={3}
+          fontSize="lg"
           fontWeight="normal"
           color="muted"
         >
