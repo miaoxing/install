@@ -16,6 +16,7 @@
     <whitelist>
       <directory>src</directory>
       <directory>views</directory>
+      <directory>pages</directory>
       <exclude>
         <directory>src/Lib</directory>
         <directory>src/Migration</directory>
