@@ -5,6 +5,7 @@ use Miaoxing\Install\Service\Install;
 use Miaoxing\Plugin\BaseController;
 use Miaoxing\Plugin\Service\Config;
 use Miaoxing\Plugin\Service\Jwt;
+use Miaoxing\Plugin\Service\Seeder;
 use Miaoxing\Plugin\Service\UserModel;
 use Miaoxing\Services\Service\Url;
 use Wei\Migration;
@@ -90,6 +91,9 @@ class extends BaseController {
         $this->tie($ret);
 
         Migration::migrate();
+        if ($req['seed']) {
+            Seeder::run();
+        }
 
         // 插入默认管理员
         $user = UserModel::saveAttributes([

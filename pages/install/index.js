@@ -14,7 +14,7 @@ export default class InstallIndex extends React.Component {
   state = {
     loading: false,
     data: {},
-  }
+  };
 
   requestDefaultUrlRewrite = false;
 
@@ -57,7 +57,7 @@ export default class InstallIndex extends React.Component {
       content,
       html: true,
     });
-  }
+  };
 
   handleSubmit = async (values) => {
     this.setState({loading: true});
@@ -78,7 +78,7 @@ export default class InstallIndex extends React.Component {
 
     await $.ret(ret);
     window.location = ret.next;
-  }
+  };
 
   render() {
     return <>
@@ -88,7 +88,7 @@ export default class InstallIndex extends React.Component {
             background: #f5f8fa url(https://image-10001577.image.myqcloud.com/uploads/3/20190602/15594729401485.jpg);
             background-size: cover;
           }
-      `}
+        `}
       />
       <Box
         width={700}
@@ -139,6 +139,14 @@ export default class InstallIndex extends React.Component {
 
           <FormItem label="管理员用户名" name="username" rules={[{required: true}]}/>
           <FormItem label="管理员密码" name="password" type="password" rules={[{required: true}]}/>
+
+          <Form.Item
+            name="seed"
+            wrapperCol={{offset: 8, span: 16}}
+            valuePropName="checked"
+          >
+            <Checkbox>安装演示数据</Checkbox>
+          </Form.Item>
 
           <Form.Item
             name="agree"
