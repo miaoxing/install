@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import {Form, Button, Checkbox, Divider} from 'antd';
-import {Box, Heading, Image} from '@mxjs/box';
+import {Box, Flex, Heading, Image} from '@mxjs/box';
 import $ from 'miaoxing';
 import api from '@mxjs/api';
 import {FormItem} from '@mxjs/a-form';
@@ -81,11 +81,11 @@ export default class InstallIndex extends React.Component {
   };
 
   render() {
-    return <>
+    return <Flex>
       <Global
         styles={css`
           body {
-            background: #f5f8fa url(https://image-10001577.image.myqcloud.com/uploads/3/20190602/15594729401485.jpg);
+            background: #f5f8fa url(https://image-10001577.image.myqcloud.com/uploads/3/20190602/15594729401485.jpg) no-repeat center center fixed;
             background-size: cover;
           }
         `}
@@ -93,7 +93,7 @@ export default class InstallIndex extends React.Component {
       <Box
         width={700}
         mx="auto"
-        mt={12}
+        my={12}
         p={12}
         bg="white"
       >
@@ -101,7 +101,7 @@ export default class InstallIndex extends React.Component {
           mb={4}
           textAlign="center"
         >
-          <Image height={30} src={$.url('images/logo.svg')}/>
+          <Image height="50px" src={$.url('images/logo.svg')}/>
         </Box>
         <Heading
           mb={12}
@@ -166,6 +166,6 @@ export default class InstallIndex extends React.Component {
           </Form.Item>
         </Form>
       </Box>
-    </>;
+    </Flex>;
   }
 }
