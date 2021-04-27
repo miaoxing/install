@@ -1,3 +1,25 @@
+## [0.2.14](https://github.com/miaoxing/install/compare/v0.2.13...v0.2.14) (2021-04-27)
+
+
+### Bug Fixes
+
+* 内容过高时背景重复，底部边距失效，头部边距导致出现滚动条 ([caf0947](https://github.com/miaoxing/install/commit/caf09477c45125a2aa5a38989e2453bd07310a9b))
+
+
+### Features
+
+* 安装时勾选是否安装演示数据 ([4bbd1a2](https://github.com/miaoxing/install/commit/4bbd1a269184c2a5fe9ffcbff80064b4a6c570f5))
+
+
+
+
+
+### Dependencies
+
+* **@miaoxing/dev:** upgrade from `6.3.4` to `6.4.0`
+* **@miaoxing/plugin:** upgrade from `0.4.3` to `0.4.4`
+* **@miaoxing/services:** upgrade from `0.3.8` to `0.3.9`
+
 ## [0.2.13](https://github.com/miaoxing/install/compare/v0.2.12...v0.2.13) (2021-03-22)
 
 
