@@ -1,6 +1,11 @@
 name: Build
 
-on: [push, pull_request, workflow_dispatch]
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    - cron: '20 0 * * *'
 
 env:
   extensions: mbstring, mysql, redis
@@ -12,8 +17,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        operating-system: [ubuntu-latest]
-        php-versions: ['7.2', '7.3', '7.4']
+        operating-system: [ ubuntu-latest ]
+        php-versions: [ '7.2', '7.3', '7.4' ]
     services:
       mysql:
         image: mysql:5.7
@@ -32,6 +37,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - name: Replace package dependencies
+        run: npx replace-pkg-dep composer.json
 
       - name: Setup cache environment
         id: cache-env
@@ -67,9 +80,9 @@ jobs:
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.json') }}
           restore-keys: ${{ runner.os }}-composer-
 
-      - name: Install
+      - name: Composer install
         run: |
-          composer install --no-progress --no-suggest --prefer-dist --optimize-autoloader
+          composer install --no-progress --prefer-dist --optimize-autoloader
 
       - name: Run
         run: ./vendor/bin/miaoxing-phpunit
@@ -90,12 +103,12 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [10.x, 12.x]
+        node-version: [ 10, 12, 14 ]
     steps:
       - uses: actions/checkout@v2
 
-      - name: Setup Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
 
@@ -111,7 +124,30 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
 
-      - name: Install
+      - name: Replace package dependencies
+        run: npx replace-pkg-dep
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '7.4'
+
+      - name: Get composer cache directory
+        id: composer-cache
+        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+
+      - name: Cache composer dependencies
+        uses: actions/cache@v1
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          # Use composer.json for key, if composer.lock is not committed.
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.json') }}
+          restore-keys: ${{ runner.os }}-composer-
+
+      - name: Composer install
+        run: composer install --no-progress --prefer-dist --optimize-autoloader
+
+      - name: Yarn install
         run: yarn install
 
       - name: Run
@@ -127,7 +163,7 @@ jobs:
           parallel: true
 
   coveralls-finish:
-    needs: [phpunit, jest]
+    needs: [ phpunit, jest ]
     runs-on: ubuntu-18.04
     steps:
       - name: Coveralls Finished
@@ -136,16 +172,24 @@ jobs:
           github-token: ${{ secrets.github_token }}
           parallel-finished: true
 
-  phpcs:
+  phpstan:
     runs-on: ${{ matrix.operating-system }}
     strategy:
       fail-fast: false
       matrix:
-        operating-system: [ubuntu-latest]
-        php-versions: ['7.4']
+        operating-system: [ ubuntu-latest ]
+        php-versions: [ '7.4' ]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - name: Replace package dependencies
+        run: npx replace-pkg-dep composer.json
 
       - name: Setup cache environment
         id: cache-env
@@ -167,6 +211,7 @@ jobs:
         with:
           php-version: ${{ matrix.php-versions }}
           extensions: ${{ env.extensions }}
+          coverage: none
 
       - name: Get composer cache directory
         id: composer-cache
@@ -180,9 +225,69 @@ jobs:
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.json') }}
           restore-keys: ${{ runner.os }}-composer-
 
-      - name: Install
+      - name: Composer install
         run: |
-          composer install --no-progress --no-suggest --prefer-dist --optimize-autoloader
+          composer install --no-progress --prefer-dist --optimize-autoloader
+
+      - name: Run
+        run: ./vendor/bin/miaoxing-phpstan
+
+  phpcs:
+    runs-on: ${{ matrix.operating-system }}
+    strategy:
+      fail-fast: false
+      matrix:
+        operating-system: [ ubuntu-latest ]
+        php-versions: [ '7.4' ]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - name: Replace package dependencies
+        run: npx replace-pkg-dep composer.json
+
+      - name: Setup cache environment
+        id: cache-env
+        uses: shivammathur/cache-extensions@v1
+        with:
+          php-version: ${{ matrix.php-versions }}
+          extensions: ${{ env.extensions }}
+          key: ${{ env.key }}
+
+      - name: Cache extensions
+        uses: actions/cache@v1
+        with:
+          path: ${{ steps.cache-env.outputs.dir }}
+          key: ${{ steps.cache-env.outputs.key }}
+          restore-keys: ${{ steps.cache-env.outputs.key }}
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-versions }}
+          extensions: ${{ env.extensions }}
+          coverage: none
+
+      - name: Get composer cache directory
+        id: composer-cache
+        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+
+      - name: Cache composer dependencies
+        uses: actions/cache@v1
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          # Use composer.json for key, if composer.lock is not committed.
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.json') }}
+          restore-keys: ${{ runner.os }}-composer-
+
+      - name: Composer install
+        run: |
+          composer install --no-progress --prefer-dist --optimize-autoloader
 
       - name: Run
         run: ./vendor/bin/miaoxing-phpcs
@@ -192,11 +297,19 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        operating-system: [ubuntu-latest]
-        php-versions: ['7.4']
+        operating-system: [ ubuntu-latest ]
+        php-versions: [ '7.4' ]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - name: Replace package dependencies
+        run: npx replace-pkg-dep composer.json
 
       - name: Setup cache environment
         id: cache-env
@@ -218,6 +331,7 @@ jobs:
         with:
           php-version: ${{ matrix.php-versions }}
           extensions: ${{ env.extensions }}
+          coverage: none
 
       - name: Get composer cache directory
         id: composer-cache
@@ -231,9 +345,9 @@ jobs:
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.json') }}
           restore-keys: ${{ runner.os }}-composer-
 
-      - name: Install
+      - name: Composer install
         run: |
-          composer install --no-progress --no-suggest --prefer-dist --optimize-autoloader
+          composer install --no-progress --prefer-dist --optimize-autoloader
 
       - name: Run
         run: ./vendor/bin/miaoxing-phpmd
@@ -243,11 +357,19 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        operating-system: [ubuntu-latest]
-        php-versions: ['7.4']
+        operating-system: [ ubuntu-latest ]
+        php-versions: [ '7.4' ]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - name: Replace package dependencies
+        run: npx replace-pkg-dep composer.json
 
       - name: Setup cache environment
         id: cache-env
@@ -269,6 +391,7 @@ jobs:
         with:
           php-version: ${{ matrix.php-versions }}
           extensions: ${{ env.extensions }}
+          coverage: none
 
       - name: Get composer cache directory
         id: composer-cache
@@ -282,9 +405,9 @@ jobs:
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.json') }}
           restore-keys: ${{ runner.os }}-composer-
 
-      - name: Install
+      - name: Composer install
         run: |
-          composer install --no-progress --no-suggest --prefer-dist --optimize-autoloader
+          composer install --no-progress --prefer-dist --optimize-autoloader
 
       - name: Run
         run: ./vendor/bin/miaoxing-phpmnd
@@ -294,11 +417,19 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        operating-system: [ubuntu-latest]
-        php-versions: ['7.4']
+        operating-system: [ ubuntu-latest ]
+        php-versions: [ '7.4' ]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - name: Replace package dependencies
+        run: npx replace-pkg-dep composer.json
 
       - name: Setup cache environment
         id: cache-env
@@ -320,6 +451,7 @@ jobs:
         with:
           php-version: ${{ matrix.php-versions }}
           extensions: ${{ env.extensions }}
+          coverage: none
 
       - name: Get composer cache directory
         id: composer-cache
@@ -333,9 +465,9 @@ jobs:
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.json') }}
           restore-keys: ${{ runner.os }}-composer-
 
-      - name: Install
+      - name: Composer install
         run: |
-          composer install --no-progress --no-suggest --prefer-dist --optimize-autoloader
+          composer install --no-progress --prefer-dist --optimize-autoloader
 
       - name: Run
         run: ./vendor/bin/miaoxing-php-cs-fixer
@@ -344,13 +476,13 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [12.x]
+        node-version: [ 14 ]
 
     steps:
       - uses: actions/checkout@v2
 
-      - name: Setup Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
 
@@ -366,7 +498,10 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
 
-      - name: Install
+      - name: Replace package dependencies
+        run: npx replace-pkg-dep package.json
+
+      - name: Yarn install
         run: yarn install
 
       - name: Run
@@ -376,12 +511,12 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [12.x]
+        node-version: [ 14 ]
     steps:
       - uses: actions/checkout@v2
 
-      - name: Setup Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
 
@@ -397,7 +532,10 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
 
-      - name: Install
+      - name: Replace package dependencies
+        run: npx replace-pkg-dep package.json
+
+      - name: Yarn install
         run: yarn install
 
       - name: Run
