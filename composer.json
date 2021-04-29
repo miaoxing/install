@@ -37,6 +37,9 @@
     },
     "wei-preload": [
       "install"
-    ]
+    ],
+    "require-ci": {
+      "miaoxing/dev": "miaoxing/dev as 6.x-dev"
+    }
   }
 }
