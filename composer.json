@@ -32,7 +32,8 @@
       "install"
     ],
     "require-ci": {
-      "miaoxing/dev": "miaoxing/dev as 6.x-dev"
+      "miaoxing/dev": "miaoxing/dev as 6.x-dev",
+      "miaoxing/phpstan-miaoxing": "miaoxing/phpstan-miaoxing as 0.1.x-dev"
     }
   }
 }
