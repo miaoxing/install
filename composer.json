@@ -28,14 +28,6 @@
   "minimum-stability": "dev",
   "prefer-stable": true,
   "extra": {
-    "installer-types": [
-      "miaoxing-plugin"
-    ],
-    "installer-paths": {
-      "plugins/{$name}/": [
-        "type:miaoxing-plugin"
-      ]
-    },
     "wei-preload": [
       "install"
     ],
