@@ -44,7 +44,8 @@ class Install extends BaseService
 
         // 跳转去安装页面
         $url = $this->url->to($this->installUrl);
-        if ($this->req->getRequestUri() !== $url
+        if (
+            $this->req->getRequestUri() !== $url
             && 0 !== strpos($this->req->getRouterPathInfo(), '/api')
         ) {
             $this->res->redirect($url)->send();
