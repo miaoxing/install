@@ -14,6 +14,7 @@
   },
   "ciDependencies": {
     "babel-preset-miaoxing": "miaoxing/babel-preset-miaoxing",
-    "@miaoxing/dev": "miaoxing/dev"
+    "@miaoxing/dev": "miaoxing/dev",
+    "jest-preset-miaoxing": "miaoxing/jest-preset-miaoxing"
   }
 }
