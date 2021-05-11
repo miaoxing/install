@@ -1,3 +1,21 @@
+## [0.2.15](https://github.com/miaoxing/install/compare/v0.2.14...v0.2.15) (2021-05-11)
+
+
+### Bug Fixes
+
+* 增加 `miaoxing/admin` 依赖 ([4fa0117](https://github.com/miaoxing/install/commit/4fa0117bceab3de156e13e3dcbbe8ee89bda11fa))
+
+
+
+
+
+### Dependencies
+
+* **@miaoxing/dev:** upgrade from `6.4.0` to `7.0.0`
+* **@miaoxing/plugin:** upgrade from `0.4.4` to `0.4.5`
+* **@miaoxing/services:** upgrade from `0.3.9` to `0.3.10`
+* **@miaoxing/admin:** upgrade from `0.3.12` to `0.3.13`
+
 ## [0.2.14](https://github.com/miaoxing/install/compare/v0.2.13...v0.2.14) (2021-04-27)
 
 
