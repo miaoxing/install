@@ -19,7 +19,7 @@ export default class InstallIndex extends React.Component {
   requestDefaultUrlRewrite = false;
 
   async componentDidMount() {
-    const ret = await api.getCur();
+    const {ret} = await api.getCur();
     this.setState({data: ret.data});
 
     if (Ret.new(ret.data.installRet).isErr()) {
@@ -33,7 +33,7 @@ export default class InstallIndex extends React.Component {
     $.get({
       url: 'api/install',
       ignoreError: true,
-    }).then(ret => {
+    }).then(({ret}) => {
       if (ret && ret.isSuc()) {
         this.requestDefaultUrlRewrite = true;
       }
@@ -64,7 +64,7 @@ export default class InstallIndex extends React.Component {
 
     values.requestDefaultUrlRewrite = this.requestDefaultUrlRewrite;
 
-    const ret = await api.postCur({
+    const {ret} = await api.postCur({
       data: values,
       loading: true,
     }).catch(() => {
