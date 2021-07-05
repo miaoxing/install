@@ -1,7 +1,7 @@
 /**
  * @layout false
  */
-import React from 'react';
+import { Component } from 'react';
 import {Form, Button, Checkbox, Divider} from 'antd';
 import {Box, Flex, Heading, Image} from '@mxjs/box';
 import $ from 'miaoxing';
@@ -10,7 +10,7 @@ import {FormItem} from '@mxjs/a-form';
 import {css, Global} from '@emotion/react';
 import {Ret} from 'miaoxing';
 
-export default class InstallIndex extends React.Component {
+export default class InstallIndex extends Component {
   state = {
     loading: false,
     data: {},
