@@ -22,7 +22,7 @@ export default class InstallIndex extends Component {
     const {ret} = await api.getCur();
     this.setState({data: ret.data});
 
-    if (Ret.new(ret.data.installRet).isErr()) {
+    if (Ret.isErr(ret.data.installRet)) {
       $.alert(ret.data.installRet.message);
     }
 
@@ -71,7 +71,7 @@ export default class InstallIndex extends Component {
       this.setState({loading: false});
     });
     this.setState({loading: false});
-    if (ret.code !== 0) {
+    if (ret.isErr()) {
       $.alert(ret.message);
       return;
     }

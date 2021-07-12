@@ -13,6 +13,7 @@
     "preset": "jest-preset-miaoxing"
   },
   "ciDependencies": {
+    "miaoxing": "miaoxing/miaoxing-js",
     "babel-preset-miaoxing": "miaoxing/babel-preset-miaoxing",
     "@miaoxing/dev": "miaoxing/dev",
     "jest-preset-miaoxing": "miaoxing/jest-preset-miaoxing"
