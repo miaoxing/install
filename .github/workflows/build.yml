@@ -104,7 +104,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [ 10, 12, 14 ]
+        node-version: [ 12, 14, 16 ]
     steps:
       - uses: actions/checkout@v2
 
@@ -149,7 +149,7 @@ jobs:
         run: composer install --no-progress --prefer-dist --optimize-autoloader
 
       - name: Yarn install
-        run: yarn install
+        run: yarn install --ignore-engines
 
       - name: Run
         run: yarn miaoxing-jest
@@ -223,7 +223,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: 14
+          node-version: 16
 
       - name: Replace package dependencies
         run: npx replace-pkg-dep composer.json
@@ -283,7 +283,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: 14
+          node-version: 16
 
       - name: Replace package dependencies
         run: npx replace-pkg-dep composer.json
@@ -343,7 +343,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: 14
+          node-version: 16
 
       - name: Replace package dependencies
         run: npx replace-pkg-dep composer.json
@@ -403,7 +403,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: 14
+          node-version: 16
 
       - name: Replace package dependencies
         run: npx replace-pkg-dep composer.json
@@ -463,7 +463,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: 14
+          node-version: 16
 
       - name: Replace package dependencies
         run: npx replace-pkg-dep composer.json
@@ -479,7 +479,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [ 14 ]
+        node-version: [ 16 ]
 
     steps:
       - uses: actions/checkout@v2
@@ -514,7 +514,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [ 14 ]
+        node-version: [ 16 ]
     steps:
       - uses: actions/checkout@v2
 
