@@ -1,7 +1,7 @@
 /**
  * @layout false
  */
-import { Component } from 'react';
+import {Component} from 'react';
 import {Form, Button, Checkbox, Divider} from 'antd';
 import {Box, Flex, Heading, Image} from '@mxjs/box';
 import $ from 'miaoxing';
@@ -64,20 +64,21 @@ export default class InstallIndex extends Component {
 
     values.requestDefaultUrlRewrite = this.requestDefaultUrlRewrite;
 
-    const {ret} = await api.postCur({
-      data: values,
-      loading: true,
-    }).catch(() => {
-      this.setState({loading: false});
-    });
-    this.setState({loading: false});
-    if (ret.isErr()) {
-      $.alert(ret.message);
-      return;
-    }
+    try {
+      const {ret} = await api.postCur({
+        data: values,
+        loading: true,
+      });
+      if (ret.isErr()) {
+        $.alert(ret.message);
+        return;
+      }
 
-    await $.ret(ret);
-    window.location = ret.next;
+      await $.ret(ret);
+      window.location = ret.next;
+    } finally {
+      this.setState({loading: false});
+    }
   };
 
   render() {
