@@ -74,6 +74,7 @@ export default class InstallIndex extends Component {
         return;
       }
 
+      window.localStorage.removeItem('token');
       await $.ret(ret);
       window.location = ret.next;
     } finally {
