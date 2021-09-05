@@ -31,7 +31,7 @@ export default class InstallIndex extends Component {
 
   async checkUrlRewrite() {
     $.get({
-      url: 'api/install',
+      url: '../admin-api/install',
       ignoreError: true,
     }).then(({ret}) => {
       if (ret && ret.isSuc()) {

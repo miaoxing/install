@@ -27,7 +27,7 @@ class Install extends BaseService
      *
      * @var string
      */
-    protected $installUrl = 'install';
+    protected $installUrl = 'admin/install';
 
     public function __construct(array $options = [])
     {
@@ -46,7 +46,7 @@ class Install extends BaseService
         $url = $this->url->to($this->installUrl);
         if (
             $this->req->getRequestUri() !== $url
-            && 0 !== strpos($this->req->getRouterPathInfo(), '/api')
+            && 0 !== strpos($this->req->getRouterPathInfo(), '/admin-api')
         ) {
             $this->res->redirect($url)->send();
             return $this->exit();
@@ -63,6 +63,7 @@ class Install extends BaseService
         ], [
             // IMPORT 当前是初始化流程，需要明确传入 wei 对象，才不会自动生成一个新的 wei 对象
             'wei' => $this->wei,
+            'db' => $this->db,
             'loadedColumns' => true,
             'columns' => [
                 'id' => [],
