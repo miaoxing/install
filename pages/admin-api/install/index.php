@@ -90,12 +90,14 @@ class extends BaseController {
         $ret = Jwt::generateDefaultKeys();
         $this->tie($ret);
 
+        $this->logger->info('run migrations');
         Migration::migrate();
         if ($req['seed']) {
             Seeder::run();
         }
 
         // 插入默认管理员
+        $this->logger->info('create admin user');
         $user = UserModel::saveAttributes([
             'username' => $req['username'],
             'password' => Password::hash($req['password']),
@@ -113,6 +115,7 @@ class extends BaseController {
         }
 
         // 写入配置
+        $this->logger->info('write install config');
         Config::save([
             'db' => [
                 'host' => $host,
@@ -127,6 +130,8 @@ class extends BaseController {
             ],
         ]);
         Config::load();
+
+        $this->logger->info('write install lock');
         file_put_contents('storage/install.lock', Time::now());
 
         return suc([
