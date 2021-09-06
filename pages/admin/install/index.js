@@ -9,6 +9,7 @@ import api from '@mxjs/api';
 import {FormItem} from '@mxjs/a-form';
 import {css, Global} from '@emotion/react';
 import {Ret} from 'miaoxing';
+import modal from '@mxjs/modal';
 
 export default class InstallIndex extends Component {
   state = {
@@ -52,10 +53,11 @@ export default class InstallIndex extends Component {
       .replace(/\n\n/g, '<br/><br/>')
       .replace(/\n/g, '');
 
-    $.alert({
+    await modal.alert({
       title,
       content,
       html: true,
+      size: 'lg',
     });
   };
 
