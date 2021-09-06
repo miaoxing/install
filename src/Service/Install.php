@@ -49,7 +49,8 @@ class Install extends BaseService
             && 0 !== strpos($this->req->getRouterPathInfo(), '/admin-api')
         ) {
             $this->res->redirect($url)->send();
-            return $this->exit();
+            $this->exit();
+            return;
         }
 
         // 初始化安装信息
