@@ -77,6 +77,17 @@ class Install extends BaseService
     }
 
     /**
+     * Return lock file path
+     *
+     * @return string
+     * @svc
+     */
+    protected function getLockFile(): string
+    {
+        return $this->lockFile;
+    }
+
+    /**
      * @svc
      */
     protected function isInstalled()
