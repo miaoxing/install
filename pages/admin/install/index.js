@@ -2,35 +2,37 @@
  * @layout false
  */
 import {Component} from 'react';
-import {Form, Button, Checkbox, Divider} from 'antd';
+import {Form, Button, Checkbox, Divider, List, Row, Col} from 'antd';
 import {Box, Flex, Heading, Image} from '@mxjs/box';
-import $ from 'miaoxing';
+import $, {Ret} from 'miaoxing';
 import api from '@mxjs/api';
 import {FormItem} from '@mxjs/a-form';
 import {css, Global} from '@emotion/react';
-import {Ret} from 'miaoxing';
 import modal from '@mxjs/modal';
+import {CheckCircleTwoTone, CloseCircleTwoTone} from '@ant-design/icons';
+
+// TODO 读取主题
+const SucIcon = () => <CheckCircleTwoTone twoToneColor="#5cb85c" style={{fontSize: '1.5rem'}}/>;
+const ErrIcon = () => <CloseCircleTwoTone twoToneColor="#fa5b50" style={{fontSize: '1.5rem'}}/>;
 
 export default class InstallIndex extends Component {
   state = {
     loading: false,
+    loadingRetry: false,
+    showForm: false,
+    code: null,
     data: {},
   };
 
   requestDefaultUrlRewrite = false;
 
   async componentDidMount() {
-    const {ret} = await api.getCur();
-    this.setState({data: ret.data});
-
-    if (Ret.isErr(ret.data.installRet)) {
-      $.alert(ret.data.installRet.message);
-    }
-
+    await this.checkInstall(false);
     await this.checkUrlRewrite();
   }
 
   async checkUrlRewrite() {
+    // TODO 考虑使用其他接口，减少重复调用，
     $.get({
       url: '../admin-api/install',
       ignoreError: true,
@@ -42,6 +44,21 @@ export default class InstallIndex extends Component {
       // Ignore error
     });
   }
+
+  handleClickRetry = async () => {
+    await this.checkInstall();
+  };
+
+  checkInstall = async (showTips = true) => {
+    this.setState({loadingRetry: true});
+    const {ret} = await api.getCur();
+    showTips && $.suc('检查完成');
+    this.setState({loadingRetry: false, data: ret.data, code: ret.code});
+  };
+
+  handleClickNext = async () => {
+    this.setState({showForm: true});
+  };
 
   showAgreement = async (e) => {
     e.preventDefault();
@@ -116,7 +133,35 @@ export default class InstallIndex extends Component {
         >
           安装
         </Heading>
-        <Form
+
+        {!this.state.showForm && <>
+          <List
+            itemLayout="horizontal"
+            dataSource={this.state.data?.installRet?.data || []}
+            size="large"
+            renderItem={item => {
+              return (
+                <List.Item>
+                  <List.Item.Meta
+                    avatar={Ret.isSuc(item) ? <SucIcon/> : <ErrIcon/>}
+                    title={item.message}
+                  />
+                </List.Item>
+              );
+            }}
+          />
+
+          <Row justify="center">
+            <Col>
+              {Ret.isSuc(this.state.data?.installRet)
+                ? <Button type="primary" onClick={this.handleClickNext}>进入安装</Button>
+                : <Button type="primary" onClick={this.handleClickRetry}
+                  loading={this.state.loadingRetry}>重新检查</Button>}
+            </Col>
+          </Row>
+        </>}
+
+        {this.state.showForm && <Form
           labelCol={{span: 8}}
           wrapperCol={{span: 8}}
           validateMessages={{
@@ -168,7 +213,7 @@ export default class InstallIndex extends Component {
               安装
             </Button>
           </Form.Item>
-        </Form>
+        </Form>}
       </Box>
     </Flex>;
   }
