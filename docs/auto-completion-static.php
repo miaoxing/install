@@ -15,6 +15,15 @@ class Install
     }
 
     /**
+     * 将安装信息写入锁定文件中
+     *
+     * @see Install::writeLockFile
+     */
+    public static function writeLockFile()
+    {
+    }
+
+    /**
      * @see Install::isInstalled
      */
     public static function isInstalled()
@@ -44,6 +53,15 @@ class Install
      * @see Install::getLockFile
      */
     public function getLockFile(): string
+    {
+    }
+
+    /**
+     * 将安装信息写入锁定文件中
+     *
+     * @see Install::writeLockFile
+     */
+    public function writeLockFile()
     {
     }
 

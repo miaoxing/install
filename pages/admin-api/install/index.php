@@ -10,7 +10,6 @@ use Miaoxing\Plugin\Service\UserModel;
 use Miaoxing\Services\Service\Url;
 use Wei\Migration;
 use Wei\Password;
-use Wei\Time;
 use Wei\V;
 
 return new
@@ -131,8 +130,7 @@ class extends BaseController {
         ]);
         Config::load();
 
-        $this->logger->info('write install lock');
-        file_put_contents('storage/install.lock', Time::now());
+        Install::writeLockFile();
 
         return suc([
             'message' => '安装成功',

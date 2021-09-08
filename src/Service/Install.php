@@ -5,6 +5,7 @@ namespace Miaoxing\Install\Service;
 use Miaoxing\Plugin\BaseService;
 use Miaoxing\Plugin\Service\AppModel;
 use Miaoxing\Plugin\Service\Ret;
+use Wei\Time;
 
 /**
  * Install
@@ -14,6 +15,7 @@ use Miaoxing\Plugin\Service\Ret;
  * @mixin \AppMixin
  * @mixin \EnvMixin
  * @mixin \UrlMixin
+ * @mixin \LoggerMixin
  */
 class Install extends BaseService
 {
@@ -85,6 +87,17 @@ class Install extends BaseService
     protected function getLockFile(): string
     {
         return $this->lockFile;
+    }
+
+    /**
+     * 将安装信息写入锁定文件中
+     *
+     * @svc
+     */
+    protected function writeLockFile()
+    {
+        $this->logger->info('write install lock');
+        file_put_contents($this->lockFile, Time::now());
     }
 
     /**
