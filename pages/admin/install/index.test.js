@@ -60,4 +60,67 @@ describe('install', () => {
 
     expect($.http).toMatchSnapshot();
   });
+
+  test('check reqs', async () => {
+    $.http = jest.fn()
+      .mockResolvedValueOnce({
+        ret: Ret.suc({
+          data: {
+            installRet: Ret.err({
+              data: [
+                Ret.suc('check suc 1'),
+                Ret.err('check fail 2'),
+              ],
+            }),
+            license: 'xxx',
+          },
+        }),
+      })
+      // 测试 rewrite
+      .mockResolvedValueOnce({
+        ret: Ret.suc(),
+      })
+      .mockResolvedValueOnce({
+        ret: Ret.suc({
+          data: {
+            installRet: Ret.err({
+              data: [
+                Ret.err('check fail 1'),
+                Ret.suc('check suc 2'),
+              ],
+            }),
+            license: 'xxx',
+          },
+        }),
+      })
+      .mockResolvedValueOnce({
+        ret: Ret.suc({
+          data: {
+            installRet: Ret.suc({
+              data: [
+                Ret.suc('check suc 1'),
+                Ret.suc('check suc 2'),
+              ],
+            }),
+            license: 'xxx',
+          },
+        }),
+      });
+
+    const result = render(<Index/>);
+
+    await result.findByText('check suc 1');
+
+    fireEvent.click(result.getByText('重新检查'));
+
+    await result.findByText('check fail 1');
+
+    fireEvent.click(result.getByText('重新检查'));
+
+    await result.findByText('check suc 1');
+
+    expect(result.queryByText('进入安装')).not.toBeNull();
+
+    expect($.http).toMatchSnapshot();
+  });
 });

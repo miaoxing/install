@@ -1,5 +1,55 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`install check reqs 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Object {
+        "method": "get",
+        "url": "/admin-api/install",
+      },
+    ],
+    Array [
+      Object {
+        "ignoreError": true,
+        "method": "get",
+        "url": "../admin-api/install",
+      },
+    ],
+    Array [
+      Object {
+        "method": "get",
+        "url": "/admin-api/install",
+      },
+    ],
+    Array [
+      Object {
+        "method": "get",
+        "url": "/admin-api/install",
+      },
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": Promise {},
+    },
+    Object {
+      "type": "return",
+      "value": Promise {},
+    },
+    Object {
+      "type": "return",
+      "value": Promise {},
+    },
+    Object {
+      "type": "return",
+      "value": Promise {},
+    },
+  ],
+}
+`;
+
 exports[`install install 1`] = `
 [MockFunction] {
   "calls": Array [
