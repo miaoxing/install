@@ -94,7 +94,11 @@ export default class InstallIndex extends Component {
       }
 
       window.localStorage.removeItem('token');
-      await $.ret(ret);
+      // 安装耗时较长，使用 alert 提示待用户确认
+      await $.alert({
+        content: ret.message,
+        okText: '进入后台',
+      });
       window.location = ret.next;
     } finally {
       this.setState({loading: false});
