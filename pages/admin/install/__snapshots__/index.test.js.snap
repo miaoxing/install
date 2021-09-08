@@ -1,5 +1,54 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`install check install fail 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Object {
+        "method": "get",
+        "url": "/admin-api/install",
+      },
+    ],
+    Array [
+      Object {
+        "ignoreError": true,
+        "method": "get",
+        "url": "../admin-api/install",
+      },
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": Promise {},
+    },
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`install check install fail 2`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Object {
+        "content": "访问后端接口失败，请检查日志",
+        "okText": "刷新再试",
+      },
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
 exports[`install check reqs 1`] = `
 [MockFunction] {
   "calls": Array [

@@ -123,4 +123,18 @@ describe('install', () => {
 
     expect($.http).toMatchSnapshot();
   });
+
+  test('check install fail', async () => {
+    $.http = jest.fn().mockRejectedValueOnce('500');
+    $.alert = jest.fn();
+
+    render(<Index/>);
+
+    await waitFor(() => {
+      expect($.alert).toBeCalled();
+    });
+
+    expect($.http).toMatchSnapshot();
+    expect($.alert).toMatchSnapshot();
+  });
 });
