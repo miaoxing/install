@@ -51,9 +51,17 @@ export default class InstallIndex extends Component {
 
   checkInstall = async (showTips = true) => {
     this.setState({loadingRetry: true});
-    const {ret} = await api.getCur();
-    showTips && $.suc('检查完成');
-    this.setState({loadingRetry: false, data: ret.data, code: ret.code});
+    try {
+      const {ret} = await api.getCur();
+      showTips && $.suc('检查完成');
+      this.setState({loadingRetry: false, data: ret.data, code: ret.code});
+    } catch (e) {
+      await $.alert({
+        content: '访问后端接口失败，请检查日志',
+        okText: '刷新再试',
+      });
+      window.location.reload();
+    }
   };
 
   handleClickNext = async () => {
