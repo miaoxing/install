@@ -31,7 +31,7 @@ describe('install', () => {
                 Ret.suc('check suc 2'),
               ],
             }),
-            license: 'xxx',
+            license: 'license title\nlicense content',
           },
         }),
       })
@@ -52,6 +52,11 @@ describe('install', () => {
     fireEvent.change(result.getByLabelText('管理员密码'), {target: {value: '123456'}});
     fireEvent.click(result.getByLabelText('安装演示数据'));
     fireEvent.click(result.getByText('我已阅读并同意'));
+
+    fireEvent.click(result.getByText('《终端用户许可协议》'));
+    await result.findByText('license title');
+    await result.findByText('license content');
+
     fireEvent.click(result.getByText('安 装'));
 
     await waitFor(() => {
