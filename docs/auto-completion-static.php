@@ -5,7 +5,7 @@ namespace Miaoxing\Install\Service;
 class Install
 {
     /**
-     * Return the path of lock file
+     * Return lock file path
      *
      * @return string
      * @see Install::getLockFile
@@ -22,6 +22,8 @@ class Install
     }
 
     /**
+     * 检查能否进行安装
+     *
      * @return Ret
      * @see Install::checkInstall
      */
@@ -36,7 +38,7 @@ if (0) {
 class Install
 {
     /**
-     * Return the path of lock file
+     * Return lock file path
      *
      * @return string
      * @see Install::getLockFile
@@ -53,6 +55,8 @@ class Install
     }
 
     /**
+     * 检查能否进行安装
+     *
      * @return Ret
      * @see Install::checkInstall
      */

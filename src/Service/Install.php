@@ -96,15 +96,100 @@ class Install extends BaseService
     }
 
     /**
+     * 检查能否进行安装
+     *
      * @return Ret
      * @svc
      */
     protected function checkInstall()
     {
         if ($this->isInstalled()) {
-            return err(['程序已安装过，如需重新安装，请手动删除：%s', $this->lockFile]);
+            // 如果已安装过，直接返回，不再检查其他项目，避免泄露配置
+            return $this->buildInstallRet([
+                err(['程序已安装过，如需重新安装，请手动删除：%s', $this->lockFile]),
+            ]);
         }
-        return suc();
+
+        $reqs = [];
+        $reqs[] = $this->getPhpVersionReq();
+        $reqs[] = $this->checkStorageDir();
+        $reqs = array_merge($reqs, $this->checkExts());
+
+        return $this->buildInstallRet($reqs);
+    }
+
+    /**
+     * 将多个返回值合并为一个，如果有错误，则使用第一个错误信息作为主错误信息
+     *
+     * @param array $rets
+     * @return Ret
+     */
+    protected function buildInstallRet(array $rets): Ret
+    {
+        $errMessage = null;
+        foreach ($rets as $ret) {
+            if ($ret->isErr()) {
+                $errMessage = $ret->getMessage();
+                break;
+            }
+        }
+
+        return ret([
+            'message' => $errMessage,
+            'code' => $errMessage ? -1 : 0,
+            'data' => $rets,
+        ]);
+    }
+
+    protected function checkStorageDir(): Ret
+    {
+        $dir = 'storage';
+        clearstatcache();
+
+        if (!is_writable($dir)) {
+            return err(['目录 %s 不可写', $dir]);
+        }
+        return suc(['目录 %s 可写', $dir]);
+    }
+
+    /**
+     * 检查扩展是否已安装
+     *
+     * @return array
+     */
+    protected function checkExts(): array
+    {
+        $extensions = [];
+        $files = glob('plugins/*/composer.json');
+        foreach ($files as $file) {
+            $content = json_decode(file_get_contents($file), true);
+            foreach ($content['require'] ?? [] as $name => $version) {
+                if ('ext-' === substr($name, 0, 4)) {
+                    $extensions[substr($name, 4)] = true;
+                }
+            }
+        }
+
+        $rets = [];
+        foreach ($extensions as $name => $flag) {
+            $rets[] = extension_loaded($name) ? suc(['扩展 %s 已安装', $name]) : err(['扩展 %s 未安装', $name]);
+        }
+        return $rets;
+    }
+
+    /**
+     * 获取 PHP 版本依赖提示
+     *
+     * 注意在入口 composer 已经做了版本检查，这里不做检查，也不适合做检查，只用于提示
+     *
+     * @return Ret
+     * @internal
+     */
+    protected function getPhpVersionReq(): Ret
+    {
+        $content = json_decode(file_get_contents('composer.json'), true);
+        $version = $content['require']['php'] ?? null;
+        return suc(['PHP 版本为 %s，%s', \PHP_VERSION, $version]);
     }
 
     /**
