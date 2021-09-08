@@ -99,7 +99,7 @@ export default class InstallIndex extends Component {
         content: ret.message,
         okText: '进入后台',
       });
-      window.location = ret.next;
+      window.location.href = ret.next;
     } finally {
       this.setState({loading: false});
     }
