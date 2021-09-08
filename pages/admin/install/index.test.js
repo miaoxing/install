@@ -137,4 +137,46 @@ describe('install', () => {
     expect($.http).toMatchSnapshot();
     expect($.alert).toMatchSnapshot();
   });
+
+  test('submit fail', async () => {
+    $.http = jest.fn()
+      .mockResolvedValueOnce({
+        ret: Ret.suc({
+          data: {
+            installRet: Ret.suc({
+              data: [
+                Ret.suc('check suc 1'),
+                Ret.suc('check suc 2'),
+              ],
+            }),
+            license: 'xxx',
+          },
+        }),
+      })
+      // 测试 rewrite
+      .mockResolvedValueOnce({
+        ret: Ret.suc(),
+      })
+      .mockRejectedValue(500);
+
+    const result = render(<Index/>);
+
+    const btn = await result.findByText('进入安装');
+    fireEvent.click(btn);
+    fireEvent.change(result.getByLabelText('数据库密码'), {target: {value: 'password'}});
+    fireEvent.change(result.getByLabelText('管理员密码'), {target: {value: '123456'}});
+    fireEvent.click(result.getByText('我已阅读并同意'));
+
+    $.alert = jest.fn();
+
+    fireEvent.click(result.getByText('安 装'));
+
+    await waitFor(() => {
+      expect($.http).toBeCalledTimes(3);
+    });
+
+    expect($.http).toMatchSnapshot();
+    // 抛出异常，未执行 alert 逻辑
+    expect($.alert).not.toBeCalled();
+  });
 });

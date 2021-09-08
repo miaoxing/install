@@ -151,3 +151,56 @@ exports[`install install 1`] = `
   ],
 }
 `;
+
+exports[`install submit fail 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Object {
+        "method": "get",
+        "url": "/admin-api/install",
+      },
+    ],
+    Array [
+      Object {
+        "ignoreError": true,
+        "method": "get",
+        "url": "../admin-api/install",
+      },
+    ],
+    Array [
+      Object {
+        "data": Object {
+          "agree": true,
+          "dbDbName": "miaoxing",
+          "dbHost": "localhost",
+          "dbPassword": "password",
+          "dbTablePrefix": "mx_",
+          "dbUser": "root",
+          "password": "123456",
+          "requestDefaultUrlRewrite": true,
+          "seed": undefined,
+          "username": "admin",
+        },
+        "loading": true,
+        "method": "post",
+        "url": "/admin-api/install",
+      },
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": Promise {},
+    },
+    Object {
+      "type": "return",
+      "value": Promise {},
+    },
+    Object {
+      "type": "return",
+      "value": Promise {},
+    },
+  ],
+}
+`;
