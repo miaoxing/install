@@ -22,7 +22,7 @@ class Install extends BaseService
     /**
      * @var string
      */
-    protected $lockFile = 'storage/install.lock';
+    protected $lockFile = 'storage/install.lock.php';
 
     /**
      * 安装页面所在的路径
@@ -97,7 +97,11 @@ class Install extends BaseService
     protected function writeLockFile()
     {
         $this->logger->info('write install lock');
-        file_put_contents($this->lockFile, Time::now());
+        $content = [
+            'installedAt' => Time::now(),
+        ];
+        $content = "<?php\n\nreturn " . var_export($content, true) . ";\n";
+        file_put_contents($this->lockFile, $content);
     }
 
     /**
