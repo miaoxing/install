@@ -34,18 +34,11 @@ class IndexTest extends BaseTestCase
             ->willReturn(suc());
 
         $schema = $this->getServiceMock(Schema::class, ['hasTable']);
-        $schema->expects($this->at(0))
+        // 前两次是下面的 Migration 和 Seeder mock 时触发
+        $schema->expects($this->exactly(3))
             ->method('hasTable')
-            ->with('migrations')
-            ->willReturn(true);
-        $schema->expects($this->at(1))
-            ->method('hasTable')
-            ->with('seeders')
-            ->willReturn(true);
-        $schema->expects($this->at(2))
-            ->method('hasTable')
-            ->with('migrations')
-            ->willReturn(false);
+            ->withConsecutive(['migrations'], ['seeders'], ['migrations'])
+            ->willReturnOnConsecutiveCalls(true, true, false);
 
         $migration = $this->getServiceMock(Migration::class, ['migrate']);
         $migration->expects($this->once())
