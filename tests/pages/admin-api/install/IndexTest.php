@@ -159,6 +159,32 @@ class IndexTest extends BaseTestCase
         $this->assertRetErr($ret, '创建数据库失败，请手动创建：createDatabase fail');
     }
 
+    public function testPostMigrationTableExists()
+    {
+        $this->getInstallMock();
+
+        $schema = $this->getServiceMock(Schema::class, ['hasTable']);
+        $schema->expects($this->once())
+            ->method('hasTable')
+            ->with('migrations')
+            ->willReturn(true);
+
+        $db = wei()->db;
+        $ret = Tester::postAdminApi('install', [
+            'dbHost' => $this->buildHostAndPort($db),
+            'dbDbName' => $db->getDbname(),
+            'dbUser' => $db->getUser(),
+            'dbPassword' => $db->getPassword(),
+            'dbTablePrefix' => $db->getTablePrefix(),
+            'username' => 'admin',
+            'password' => 'password2',
+            'agree' => true,
+            'seed' => true,
+        ]);
+
+        $this->assertRetErr($ret, '数据表 mx_migrations 已存在，不能安装');
+    }
+
     /**
      * @return InvocationMocker
      */
