@@ -10,6 +10,7 @@ use Miaoxing\Plugin\Service\UserModel;
 use Miaoxing\Services\Service\Url;
 use Wei\Migration;
 use Wei\Password;
+use Wei\Schema;
 use Wei\V;
 
 return new
@@ -71,10 +72,9 @@ class extends BaseController {
         }
 
         // 如果数据库不存在，尝试自动创建
-        $databases = array_column($db->fetchAll('SHOW DATABASES'), 'Database');
-        if (!in_array($req['dbDbName'], $databases, true)) {
+        if (!Schema::hasDatabase($req['dbDbName'])) {
             try {
-                $db->executeUpdate('CREATE DATABASE IF NOT EXISTS ' . $req['dbDbName']);
+                Schema::createDatabase($req['dbDbName']);
             } catch (\Exception $e) {
                 return err(['创建数据库失败，请手动创建：%s', $e->getMessage()]);
             }
