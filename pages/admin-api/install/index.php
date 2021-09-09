@@ -32,7 +32,7 @@ class extends BaseController {
 
     public function post($req)
     {
-        // 1. 检查是否已安装
+        // 检查是否已安装
         $ret = Install::checkInstall();
         $this->tie($ret);
 
@@ -47,7 +47,7 @@ class extends BaseController {
             ->check($req);
         $this->tie($ret);
 
-        // 2. 检查数据库连接
+        // 检查数据库连接
         if (false !== strpos($req['dbHost'], ':')) {
             [$host, $port] = explode(':', $req['dbHost']);
         } else {
@@ -106,15 +106,6 @@ class extends BaseController {
             Seeder::run();
         }
 
-        // 3. 逐个安装插件
-        $rets = [];
-        foreach ($this->plugin->getAll() as $plugin) {
-            $ret = $this->plugin->install($plugin->getId());
-            if (1 !== $ret['code']) {
-                $rets[] = $ret;
-            }
-        }
-
         // 写入配置
         $this->logger->info('write install config');
         Config::save([
@@ -133,6 +124,12 @@ class extends BaseController {
         Config::load();
 
         Install::writeLockFile();
+
+        // 逐个安装插件
+        // NOTE: 暂不处理安装失败的情况，因为没有安装逻辑
+        foreach ($this->plugin->getAll() as $plugin) {
+            $this->plugin->install($plugin->getId());
+        }
 
         return suc([
             'message' => '安装成功',
