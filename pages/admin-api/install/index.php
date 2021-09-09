@@ -66,7 +66,7 @@ class extends BaseController {
             'tablePrefix' => $req['dbTablePrefix'],
         ]);
         try {
-            $db->connect();
+            $db->reconnect();
         } catch (\Exception $e) {
             return err(['连接数据库失败：%s', $e->getMessage()]);
         }
