@@ -91,9 +91,6 @@ class extends BaseController {
 
         $this->logger->info('run migrations');
         Migration::migrate();
-        if ($req['seed']) {
-            Seeder::run();
-        }
 
         // 插入默认管理员
         $this->logger->info('create admin user');
@@ -103,6 +100,11 @@ class extends BaseController {
             'isAdmin' => true,
         ]);
         AdminModel::save(['userId' => $user->id]);
+
+        if ($req['seed']) {
+            $this->logger->info('run seeder');
+            Seeder::run();
+        }
 
         // 3. 逐个安装插件
         $rets = [];
