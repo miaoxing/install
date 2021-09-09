@@ -98,4 +98,18 @@ class IndexTest extends BaseTestCase
         $ret = Tester::postAdminApi('install');
         $this->assertSameRet($err, $ret);
     }
+
+    public function testPostInvalidDbName()
+    {
+        $install = $this->getServiceMock(Install::class, ['checkInstall']);
+        $install->expects($this->once())
+            ->method('checkInstall')
+            ->willReturn(suc());
+
+        $ret = Tester::postAdminApi('install', [
+            'dbHost' => 'mysql',
+            'dbDbName' => '` SELECT',
+        ]);
+        $this->assertRetErr($ret, '数据库名称必须匹配模式"/^[0-9a-z_]+$/i"');
+    }
 }
