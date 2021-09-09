@@ -86,4 +86,16 @@ class IndexTest extends BaseTestCase
     {
         return $db->getHost() . ($db->getPort() ? (':' . $db->getPort()) : '');
     }
+
+    public function testPostCheckInstallErr()
+    {
+        $err = err('test-err', -1);
+        $install = $this->getServiceMock(Install::class, ['checkInstall']);
+        $install->expects($this->once())
+            ->method('checkInstall')
+            ->willReturn($err);
+
+        $ret = Tester::postAdminApi('install');
+        $this->assertSameRet($err, $ret);
+    }
 }
