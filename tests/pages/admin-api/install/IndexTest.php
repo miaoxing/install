@@ -17,6 +17,31 @@ use Wei\Schema;
 
 class IndexTest extends BaseTestCase
 {
+    /**
+     * @var string
+     */
+    protected $dbname;
+
+    /**
+     * @var string
+     */
+    protected $port;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->dbname = $this->wei->db->getDbname();
+        $this->port = $this->wei->db->getPort();
+    }
+
+    protected function tearDown(): void
+    {
+        // 安装时会清空
+        $this->wei->db->setOption('dbname', $this->dbname);
+        $this->wei->db->setOption('port', $this->port);
+        parent::tearDown();
+    }
+
     public function testGet()
     {
         /** @var Ret $ret */
@@ -112,7 +137,8 @@ class IndexTest extends BaseTestCase
     {
         $this->getInstallMock();
 
-        $db = wei()->db;
+        $db = $this->wei->db;
+        $host = $db->getHost();
         $ret = Tester::postAdminApi('install', [
             'dbHost' => 'invalid',
             'dbDbName' => $db->getDbname(),
@@ -127,6 +153,8 @@ class IndexTest extends BaseTestCase
 
         $this->assertTrue($ret->isErr());
         $this->assertStringStartsWith('连接数据库失败：', $ret->getMessage());
+
+        $db->setOption('host', $host);
     }
 
     public function testPostCreateDatabaseFail()
@@ -134,7 +162,8 @@ class IndexTest extends BaseTestCase
         $this->getInstallMock();
 
         $schema = $this->getServiceMock(Schema::class, [
-            'hasDatabase', 'createDatabase'
+            'hasDatabase',
+            'createDatabase',
         ]);
         $schema->expects($this->once())
             ->method('hasDatabase')
