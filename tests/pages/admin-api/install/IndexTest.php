@@ -9,6 +9,7 @@ use Miaoxing\Plugin\Service\Seeder;
 use Miaoxing\Plugin\Service\Tester;
 use Miaoxing\Plugin\Service\UserModel;
 use Miaoxing\Plugin\Test\BaseTestCase;
+use PHPUnit\Framework\MockObject\Builder\InvocationMocker;
 use Wei\Db;
 use Wei\Migration;
 use Wei\Ret;
@@ -28,10 +29,7 @@ class IndexTest extends BaseTestCase
 
     public function testPost()
     {
-        $install = $this->getServiceMock(Install::class, ['checkInstall']);
-        $install->expects($this->once())
-            ->method('checkInstall')
-            ->willReturn(suc());
+        $this->getInstallMock();
 
         $schema = $this->getServiceMock(Schema::class, ['hasTable']);
         // 前两次是下面的 Migration 和 Seeder mock 时触发
@@ -101,15 +99,44 @@ class IndexTest extends BaseTestCase
 
     public function testPostInvalidDbName()
     {
-        $install = $this->getServiceMock(Install::class, ['checkInstall']);
-        $install->expects($this->once())
-            ->method('checkInstall')
-            ->willReturn(suc());
+        $this->getInstallMock();
 
         $ret = Tester::postAdminApi('install', [
             'dbHost' => 'mysql',
             'dbDbName' => '` SELECT',
         ]);
         $this->assertRetErr($ret, '数据库名称必须匹配模式"/^[0-9a-z_]+$/i"');
+    }
+
+    public function testPostConnectDbFail()
+    {
+        $this->getInstallMock();
+
+        $db = wei()->db;
+        $ret = Tester::postAdminApi('install', [
+            'dbHost' => 'invalid',
+            'dbDbName' => $db->getDbname(),
+            'dbUser' => $db->getUser(),
+            'dbPassword' => $db->getPassword(),
+            'dbTablePrefix' => $db->getTablePrefix(),
+            'username' => 'admin',
+            'password' => 'password2',
+            'agree' => true,
+            'seed' => true,
+        ]);
+
+        $this->assertTrue($ret->isErr());
+        $this->assertStringStartsWith('连接数据库失败：', $ret->getMessage());
+    }
+
+    /**
+     * @return InvocationMocker
+     */
+    protected function getInstallMock(): InvocationMocker
+    {
+        return $this->getServiceMock(Install::class, ['checkInstall'])
+            ->expects($this->once())
+            ->method('checkInstall')
+            ->willReturn(suc());
     }
 }
