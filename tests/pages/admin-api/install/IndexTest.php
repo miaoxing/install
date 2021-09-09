@@ -129,6 +129,36 @@ class IndexTest extends BaseTestCase
         $this->assertStringStartsWith('连接数据库失败：', $ret->getMessage());
     }
 
+    public function testPostCreateDatabaseFail()
+    {
+        $this->getInstallMock();
+
+        $schema = $this->getServiceMock(Schema::class, [
+            'hasDatabase', 'createDatabase'
+        ]);
+        $schema->expects($this->once())
+            ->method('hasDatabase')
+            ->willReturn(false);
+        $schema->expects($this->once())
+            ->method('createDatabase')
+            ->willThrowException(new \Exception('createDatabase fail', -1));
+
+        $db = wei()->db;
+        $ret = Tester::postAdminApi('install', [
+            'dbHost' => $this->buildHostAndPort($db),
+            'dbDbName' => $db->getDbname(),
+            'dbUser' => $db->getUser(),
+            'dbPassword' => $db->getPassword(),
+            'dbTablePrefix' => $db->getTablePrefix(),
+            'username' => 'admin',
+            'password' => 'password2',
+            'agree' => true,
+            'seed' => true,
+        ]);
+
+        $this->assertRetErr($ret, '创建数据库失败，请手动创建：createDatabase fail');
+    }
+
     /**
      * @return InvocationMocker
      */
