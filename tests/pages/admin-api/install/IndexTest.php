@@ -185,6 +185,29 @@ class IndexTest extends BaseTestCase
         $this->assertRetErr($ret, '数据表 mx_migrations 已存在，不能安装');
     }
 
+    public function testPostDbHostContainsPort()
+    {
+        $this->getInstallMock();
+
+        $db = wei()->db;
+        $ret = Tester::postAdminApi('install', [
+            'dbHost' => 'invalid:port',
+            'dbDbName' => $db->getDbname(),
+            'dbUser' => $db->getUser(),
+            'dbPassword' => $db->getPassword(),
+            'dbTablePrefix' => $db->getTablePrefix(),
+            'username' => 'admin',
+            'password' => 'password2',
+            'agree' => true,
+            'seed' => true,
+        ]);
+
+        $this->assertTrue($ret->isErr());
+        $this->assertStringStartsWith('连接数据库失败：', $ret->getMessage());
+
+        $this->assertSame('port', $db->getPort());
+    }
+
     /**
      * @return InvocationMocker
      */
