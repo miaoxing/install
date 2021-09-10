@@ -113,4 +113,54 @@ final class InstallTest extends BaseTestCase
         $ret = Install::checkInstall();
         $this->assertRetSuc($ret);
     }
+
+    public function testCheckExtsErr()
+    {
+        $install = $this->getServiceMock(Install::class, [
+            'isInstalled',
+            'checkDirs',
+        ]);
+
+        $install->expects($this->once())
+            ->method('isInstalled')
+            ->willReturn(false);
+
+        $install->expects($this->once())
+            ->method('checkDirs')
+            ->willReturn([]);
+
+        $file = glob('plugins/*/composer.json')[0];
+        $content = json_decode(file_get_contents($file), true);
+        $content['require']['ext-invalid'] = '*';
+        $flags = \JSON_PRETTY_PRINT | \JSON_UNESCAPED_SLASHES;
+        file_put_contents($file, json_encode($content, $flags));
+
+        $ret = Install::checkInstall();
+
+        $this->assertRetErr($ret, '扩展 invalid 未安装');
+
+        unset($content['require']['ext-invalid']);
+        $content = str_replace('    ', '  ', json_encode($content, $flags)) . "\n";
+        file_put_contents($file, $content);
+    }
+
+    public function testCheckExtsSuc()
+    {
+        $install = $this->getServiceMock(Install::class, [
+            'isInstalled',
+            'checkDirs',
+        ]);
+
+        $install->expects($this->once())
+            ->method('isInstalled')
+            ->willReturn(false);
+
+        $install->expects($this->once())
+            ->method('checkDirs')
+            ->willReturn([]);
+
+        $ret = Install::checkInstall();
+
+        $this->assertRetSuc($ret);
+    }
 }
