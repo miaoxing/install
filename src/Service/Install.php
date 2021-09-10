@@ -31,6 +31,16 @@ class Install extends BaseService
      */
     protected $installUrl = 'admin/install';
 
+    /**
+     * 要检查的目录
+     *
+     * @var string[]
+     */
+    protected $checkDirs = [
+        'storage',
+        'public/uploads',
+    ];
+
     public function __construct(array $options = [])
     {
         parent::__construct($options);
@@ -129,8 +139,7 @@ class Install extends BaseService
 
         $reqs = [];
         $reqs[] = $this->getPhpVersionReq();
-        $reqs[] = $this->checkStorageDir();
-        $reqs = array_merge($reqs, $this->checkExts());
+        $reqs = array_merge($reqs, $this->checkDirs(), $this->checkExts());
 
         return $this->buildInstallRet($reqs);
     }
@@ -158,21 +167,28 @@ class Install extends BaseService
         ]);
     }
 
-    protected function checkStorageDir(): Ret
+    /**
+     * @return array<Ret>
+     */
+    protected function checkDirs(): array
     {
-        $dir = 'storage';
         clearstatcache();
 
-        if (!is_writable($dir)) {
-            return err(['目录 %s 不可写', $dir]);
+        $rets = [];
+        foreach ($this->checkDirs as $dir) {
+            if (!is_writable($dir)) {
+                $rets[] = err(['目录 %s 不可写', $dir]);
+            } else {
+                $rets[] = suc(['目录 %s 可写', $dir]);
+            }
         }
-        return suc(['目录 %s 可写', $dir]);
+        return $rets;
     }
 
     /**
      * 检查扩展是否已安装
      *
-     * @return array
+     * @return array<Ret>
      */
     protected function checkExts(): array
     {
