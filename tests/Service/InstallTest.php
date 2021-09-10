@@ -33,7 +33,7 @@ final class InstallTest extends BaseTestCase
     {
         $install = $this->getServiceMock(Install::class, [
             'isInstalled',
-            'checkStorageDir',
+            'checkDirs',
             'checkExts',
         ]);
 
@@ -42,8 +42,8 @@ final class InstallTest extends BaseTestCase
             ->willReturn(false);
 
         $install->expects($this->once())
-            ->method('checkStorageDir')
-            ->willReturn(suc());
+            ->method('checkDirs')
+            ->willReturn([]);
 
         $install->expects($this->once())
             ->method('checkExts')
