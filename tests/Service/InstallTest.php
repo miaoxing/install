@@ -3,6 +3,8 @@
 namespace MiaoxingTest\Install\Service;
 
 use Miaoxing\Install\Service\Install;
+use Miaoxing\Plugin\Service\App;
+use Miaoxing\Plugin\Service\AppModel;
 use Miaoxing\Plugin\Test\BaseTestCase;
 
 /**
@@ -162,5 +164,32 @@ final class InstallTest extends BaseTestCase
         $ret = Install::checkInstall();
 
         $this->assertRetSuc($ret);
+    }
+
+    /**
+     * 测试模拟 App 后，各项功能能正确读取
+     *
+     * @throws \ReflectionException
+     */
+    public function testInitApp()
+    {
+        $install = wei()->install;
+
+        $method = new \ReflectionMethod($install, 'initApp');
+        $method->setAccessible(true);
+        $method->invoke($install);
+
+        /** @var App $app */
+        $app = wei()->app;
+        $this->assertSame(1, $app->getId(), '能够读取到 id');
+
+        $model = $app->getModel();
+        $this->assertInstanceOf(AppModel::class, $model);
+
+        $this->assertSame(1, $model->id, '能够读取到编号');
+
+        $this->assertSame(['app', 'admin'], $model->pluginIds, '能够读取到预设的插件');
+
+        $this->assertFalse($model->hasColumn('created_at'), '未预设 created_at 字段，读取不到');
     }
 }
