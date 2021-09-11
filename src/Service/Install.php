@@ -16,6 +16,7 @@ use Wei\Time;
  * @mixin \EnvMixin
  * @mixin \UrlMixin
  * @mixin \LoggerMixin
+ * @mixin \DbMixin
  */
 class Install extends BaseService
 {
@@ -65,17 +66,29 @@ class Install extends BaseService
             return;
         }
 
-        // 初始化安装信息
+        $this->initApp();
+    }
+
+    /**
+     * 安装时，还没有数据库连接，AppModel 不能读取到数据，因此需自行初始化
+     *
+     * @internal
+     */
+    protected function initApp()
+    {
         $this->app->setId(1);
         $this->app->setModel(AppModel::new([
             'id' => 1,
             'name' => 'app',
             'pluginIds' => [
                 'app',
+                // 安装页面使用后台的页面样式
+                'admin',
             ],
         ], [
-            // IMPORT 当前是初始化流程，需要明确传入 wei 对象，才不会自动生成一个新的 wei 对象
+            // IMPORTANT 当前是初始化流程，需要明确传入 wei 对象，才不会自动生成一个新的 wei 对象
             'wei' => $this->wei,
+            // 初始化时，CastTrait::isIgnoreCast 要用到 db 服务
             'db' => $this->db,
             'loadedColumns' => true,
             'columns' => [
