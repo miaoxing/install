@@ -6,6 +6,9 @@
   "repository": "git@github.com:miaoxing/install.git",
   "author": "twinh <twinhuang@qq.com>",
   "license": "MIT",
+  "workspaces": [
+    "plugins/*"
+  ],
   "devDependencies": {
     "@miaoxing/dev": "^7.0.1"
   },
