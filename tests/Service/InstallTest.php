@@ -191,5 +191,7 @@ final class InstallTest extends BaseTestCase
         $this->assertSame(['app', 'admin'], $model->pluginIds, '能够读取到预设的插件');
 
         $this->assertFalse($model->hasColumn('created_at'), '未预设 created_at 字段，读取不到');
+
+        $app->setModel(null);
     }
 }
