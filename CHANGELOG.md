@@ -1,3 +1,53 @@
+# [0.3.0](https://github.com/miaoxing/install/compare/v0.2.17...v0.3.0) (2021-10-28)
+
+
+### Bug Fixes
+
+* **install:** 增加协议弹出框宽度 ([2337cf3](https://github.com/miaoxing/install/commit/2337cf3c3a3a598f5648aab8fdfe32c0ca29c84f))
+* **install:** 安装成功后，移除 token，解决重复安装后进入后台提示 Token 错误 ([d5da5ae](https://github.com/miaoxing/install/commit/d5da5ae246a6a688d8e4fbd390b94928891466f0))
+* **install:** 请求失败时，不能获取到 ret 导致 js 错误 ([7443c0c](https://github.com/miaoxing/install/commit/7443c0c8ebc7d7b333e8c991593d4bd4520a88c7))
+
+
+### Code Refactoring
+
+* 调整错误码为 001 开始 ([fe45674](https://github.com/miaoxing/install/commit/fe456746f846c4c2aa5954479aac4407b404a84a))
+
+
+### Features
+
+* **install:** `Install` 服务增加`getLockFile` 方法 ([62adca8](https://github.com/miaoxing/install/commit/62adca8642ba7f1827d41781a0e6f9743e1d884a))
+* **install:** 增加 `writeLockFile` 方法，用于将安装信息写入锁定文件中 ([f5e965e](https://github.com/miaoxing/install/commit/f5e965ed89f83798c9a42e1bf4184646c6f3b64c))
+* **install:** 增加前端检查列表，检查通过可进入安装，检查不通过重新检查 ([e3223f6](https://github.com/miaoxing/install/commit/e3223f6a0430ffb261a5411318c7594518f974c1))
+* **install:** 安装成功后，弹窗等用户确认后再进入后台 ([d803d56](https://github.com/miaoxing/install/commit/d803d560b6a5812fbf4d33896b1ef02ff9c6cb70))
+* **install:** 安装锁改为 PHP 文件，存储安装信息的数组 ([94c5233](https://github.com/miaoxing/install/commit/94c52333beb4e4725f33654592218d362bf17413))
+* **install:** 支持检查多个目录是否可写，默认检查目录增加 `public/uploads` ([6606d64](https://github.com/miaoxing/install/commit/6606d6476eacf601abf7ef2d6a4f5d8faa580745))
+* **install:** 检查安装方法增加目录是否可写，依赖检查 ([4f00b06](https://github.com/miaoxing/install/commit/4f00b06c15dbbe4da492c5195adbdefbf4530115))
+* **install:** 进入安装页面时，如果获取不到后台数据，展示错误提示 ([2d8e509](https://github.com/miaoxing/install/commit/2d8e5098dddd514143071ea1c46c85bde14fbf5c))
+
+
+### BREAKING CHANGES
+
+* **install:** 安装锁改为 PHP 文件，存储安装信息的数组
+* 调整错误码为 001 开始
+
+
+
+
+
+### Dependencies
+
+* **@mxjs/box:** upgrade from `0.2.2` to `0.2.3`
+* **miaoxing:** upgrade from `0.2.5` to `0.3.0`
+* **@mxjs/api:** upgrade from `0.1.3` to `0.1.4`
+* **@mxjs/a-form:** upgrade from `0.2.15` to `0.3.0`
+* **@mxjs/modal:** upgrade from `0.1.4` to `0.2.0`
+* **@mxjs/app:** upgrade from `0.3.2` to `0.3.3`
+* **@miaoxing/dev:** upgrade from `7.0.1` to `8.0.0`
+* **@mxjs/test:** upgrade from `0.1.8` to `0.2.0`
+* **@miaoxing/plugin:** upgrade from `0.4.7` to `0.5.0`
+* **@miaoxing/services:** upgrade from `0.3.12` to `0.4.0`
+* **@miaoxing/admin:** upgrade from `0.3.15` to `0.4.0`
+
 ## [0.2.17](https://github.com/miaoxing/install/compare/v0.2.16...v0.2.17) (2021-05-21)
 
 
