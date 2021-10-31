@@ -13,11 +13,10 @@ use Wei\Password;
 use Wei\Schema;
 use Wei\V;
 
-return new
-/**
+return new /**
  * @mixin SchemaMixin
  */
-class extends BaseController {
+class () extends BaseController {
     protected $controllerAuth = false;
 
     public function get()
