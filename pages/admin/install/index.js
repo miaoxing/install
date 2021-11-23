@@ -3,7 +3,7 @@
  */
 import {Component} from 'react';
 import {Form, Button, Checkbox, Divider, List, Row, Col} from 'antd';
-import {Box, Flex, Heading, Image} from '@mxjs/box';
+import {Box, Image} from '@mxjs/box';
 import $, {Ret} from 'miaoxing';
 import api from '@mxjs/api';
 import {FormItem} from '@mxjs/a-form';
@@ -116,7 +116,7 @@ export default class InstallIndex extends Component {
   };
 
   render() {
-    return <Flex>
+    return <Box flex>
       <Global
         styles={css`
           body {
@@ -136,17 +136,16 @@ export default class InstallIndex extends Component {
           mb={4}
           textAlign="center"
         >
-          <Image height="50px" src={$.url('images/logo.svg')}/>
+          <Image h="50px" src={$.url('images/logo.svg')}/>
         </Box>
-        <Heading
-          mb={12}
-          textAlign="center"
-          fontSize="lg"
-          fontWeight="normal"
-          color="muted"
+        <Box
+          mb12
+          textCenter
+          textLG
+          gray500
         >
           安装
-        </Heading>
+        </Box>
 
         {!this.state.showForm && <>
           <List
@@ -229,6 +228,6 @@ export default class InstallIndex extends Component {
           </Form.Item>
         </Form>}
       </Box>
-    </Flex>;
+    </Box>;
   }
 }
