@@ -2,13 +2,12 @@
  * @layout false
  */
 import {Component} from 'react';
-import {Form, Button, Checkbox, Divider, List, Row, Col} from 'antd';
+import {Form, Button, Checkbox, Divider, List, Row, Col, Modal} from 'antd';
 import {Box, Image} from '@mxjs/box';
 import $, {Ret} from 'miaoxing';
 import api from '@mxjs/api';
 import {FormItem} from '@mxjs/a-form';
 import {css, Global} from '@emotion/react';
-import modal from '@mxjs/modal';
 import {CheckCircleTwoTone, CloseCircleTwoTone} from '@ant-design/icons';
 
 // TODO 读取主题
@@ -78,11 +77,12 @@ export default class InstallIndex extends Component {
       .replace(/\n\n/g, '<br/><br/>')
       .replace(/\n/g, '');
 
-    await modal.alert({
+    Modal.info({
       title,
-      content,
-      html: true,
-      size: 'lg',
+      content: <Box overflowYScroll maxH="calc(100vh - 200px)" dangerouslySetInnerHTML={{__html: content}}/>,
+      width: 500,
+      centered: true,
+      icon: false,
     });
   };
 
@@ -115,6 +115,10 @@ export default class InstallIndex extends Component {
     }
   };
 
+  handleOk = () => {
+    this.setState({isModalVisible: false});
+  }
+
   render() {
     return <Box flex>
       <Global
@@ -125,25 +129,11 @@ export default class InstallIndex extends Component {
           }
         `}
       />
-      <Box
-        width={700}
-        mx="auto"
-        my={12}
-        p={12}
-        bg="white"
-      >
-        <Box
-          mb={4}
-          textAlign="center"
-        >
+      <Box w={700} mx="auto" my12 p12 bgWhite>
+        <Box mb4 textCenter>
           <Image h="50px" src={$.url('images/logo.svg')}/>
         </Box>
-        <Box
-          mb12
-          textCenter
-          textLG
-          gray500
-        >
+        <Box mb12 textCenter textLG gray500>
           安装
         </Box>
 
