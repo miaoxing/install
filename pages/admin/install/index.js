@@ -9,6 +9,7 @@ import api from '@mxjs/api';
 import {FormItem} from '@mxjs/a-form';
 import {css, Global} from '@emotion/react';
 import {CheckCircleTwoTone, CloseCircleTwoTone} from '@ant-design/icons';
+import logo from '@miaoxing/admin/images/logo.svg';
 
 // TODO 读取主题
 const SucIcon = () => <CheckCircleTwoTone twoToneColor="#5cb85c" style={{fontSize: '1.5rem'}}/>;
@@ -131,7 +132,7 @@ export default class InstallIndex extends Component {
       />
       <Box w={700} mx="auto" my12 p12 bgWhite>
         <Box mb4 textCenter>
-          <Image h="50px" src={$.url('images/logo.svg')}/>
+          <Image h="50px" src={logo}/>
         </Box>
         <Box mb12 textCenter textLG gray500>
           安装
