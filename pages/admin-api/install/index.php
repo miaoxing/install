@@ -107,7 +107,7 @@ class () extends BaseController {
 
         // 写入配置
         $this->logger->info('write install config');
-        Config::save([
+        Config::updateLocal([
             'db' => [
                 'host' => $host,
                 'port' => $port,
@@ -120,7 +120,6 @@ class () extends BaseController {
                 'defaultUrlRewrite' => $req['requestDefaultUrlRewrite'],
             ],
         ]);
-        Config::load();
 
         Install::writeLockFile();
 
