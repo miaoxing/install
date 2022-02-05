@@ -81,13 +81,10 @@ class IndexTest extends BaseTestCase
             ->method('save');
 
         $config = $this->getServiceMock(Config::class, [
-            'save',
-            'load',
+            'updateLocal',
         ]);
         $config->expects($this->once())
-            ->method('save');
-        $config->expects($this->once())
-            ->method('load');
+            ->method('updateLocal');
 
         $db = wei()->db;
         $ret = Tester::postAdminApi('install', [
