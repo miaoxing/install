@@ -76,9 +76,9 @@ class Install extends BaseService
      */
     protected function initApp()
     {
-        $this->app->setId(1);
+        $this->app->setId('1');
         $this->app->setModel(AppModel::new([
-            'id' => 1,
+            'id' => '1',
             'name' => 'app',
             'pluginIds' => [
                 'app',

@@ -181,12 +181,12 @@ final class InstallTest extends BaseTestCase
 
         /** @var App $app */
         $app = wei()->app;
-        $this->assertSame(1, $app->getId(), '能够读取到 id');
+        $this->assertSame('1', $app->getId(), '能够读取到 id');
 
         $model = $app->getModel();
         $this->assertInstanceOf(AppModel::class, $model);
 
-        $this->assertSame(1, $model->id, '能够读取到编号');
+        $this->assertSame('1', $model->id, '能够读取到编号');
 
         $this->assertSame(['app', 'admin'], $model->pluginIds, '能够读取到预设的插件');
 
