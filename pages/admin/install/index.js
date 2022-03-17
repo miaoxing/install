@@ -27,7 +27,7 @@ export default class InstallIndex extends Component {
   requestDefaultUrlRewrite = false;
 
   async componentDidMount() {
-    await this.checkInstall(false);
+    await this.checkInstall(true);
     await this.checkUrlRewrite();
   }
 
@@ -49,11 +49,15 @@ export default class InstallIndex extends Component {
     await this.checkInstall();
   };
 
-  checkInstall = async (showTips = true) => {
+  checkInstall = async (first = false) => {
     this.setState({loadingRetry: true});
     try {
       const {ret} = await api.getCur();
-      showTips && $.suc('检查完成');
+      !first && $.suc('检查完成');
+
+      // 如果是首次检查，并且可以安装，则直接显示安装表单
+      first && Ret.isSuc(ret.data?.installRet) && this.setState({showForm: true});
+
       this.setState({loadingRetry: false, data: ret.data, code: ret.code});
     } catch (e) {
       await $.alert({
