@@ -1,3 +1,25 @@
+## [0.3.5](https://github.com/miaoxing/install/compare/v0.3.4...v0.3.5) (2022-03-31)
+
+
+### Features
+
+* **install:** 如果是首次检查，并且可以安装，则直接显示安装表单 ([0af07b6](https://github.com/miaoxing/install/commit/0af07b6605f181dcb0263903e48ddfeb3bd02919))
+
+
+
+
+
+### Dependencies
+
+* **@mxjs/box:** upgrade from `0.3.1` to `0.3.2`
+* **@mxjs/api:** upgrade from `0.1.7` to `0.1.8`
+* **@mxjs/a-form:** upgrade from `0.3.3` to `0.3.4`
+* **@mxjs/app:** upgrade from `0.4.2` to `0.4.3`
+* **@mxjs/test:** upgrade from `0.2.3` to `0.2.4`
+* **@miaoxing/plugin:** upgrade from `0.8.0` to `0.8.1`
+* **@miaoxing/services:** upgrade from `0.5.1` to `0.5.2`
+* **@miaoxing/admin:** upgrade from `0.6.0` to `0.7.0`
+
 ## [0.3.4](https://github.com/miaoxing/install/compare/v0.3.3...v0.3.4) (2022-03-04)
 
 
