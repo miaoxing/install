@@ -9,22 +9,11 @@ exports[`install check install fail 1`] = `
         "url": "/admin-api/install",
       },
     ],
-    Array [
-      Object {
-        "ignoreError": true,
-        "method": "get",
-        "url": "../admin-api/install",
-      },
-    ],
   ],
   "results": Array [
     Object {
       "type": "return",
       "value": Promise {},
-    },
-    Object {
-      "type": "return",
-      "value": undefined,
     },
   ],
 }
@@ -60,13 +49,6 @@ exports[`install check reqs 1`] = `
     ],
     Array [
       Object {
-        "ignoreError": true,
-        "method": "get",
-        "url": "../admin-api/install",
-      },
-    ],
-    Array [
-      Object {
         "method": "get",
         "url": "/admin-api/install",
       },
@@ -79,10 +61,6 @@ exports[`install check reqs 1`] = `
     ],
   ],
   "results": Array [
-    Object {
-      "type": "return",
-      "value": Promise {},
-    },
     Object {
       "type": "return",
       "value": Promise {},
@@ -110,13 +88,6 @@ exports[`install install 1`] = `
     ],
     Array [
       Object {
-        "ignoreError": true,
-        "method": "get",
-        "url": "../admin-api/install",
-      },
-    ],
-    Array [
-      Object {
         "data": Object {
           "agree": true,
           "dbDbName": "miaoxing",
@@ -125,7 +96,6 @@ exports[`install install 1`] = `
           "dbTablePrefix": "mx_",
           "dbUser": "root",
           "password": "123456",
-          "requestDefaultUrlRewrite": true,
           "seed": true,
           "username": "admin",
         },
@@ -136,10 +106,6 @@ exports[`install install 1`] = `
     ],
   ],
   "results": Array [
-    Object {
-      "type": "return",
-      "value": Promise {},
-    },
     Object {
       "type": "return",
       "value": Promise {},
@@ -163,13 +129,6 @@ exports[`install submit fail 1`] = `
     ],
     Array [
       Object {
-        "ignoreError": true,
-        "method": "get",
-        "url": "../admin-api/install",
-      },
-    ],
-    Array [
-      Object {
         "data": Object {
           "agree": true,
           "dbDbName": "miaoxing",
@@ -178,7 +137,6 @@ exports[`install submit fail 1`] = `
           "dbTablePrefix": "mx_",
           "dbUser": "root",
           "password": "123456",
-          "requestDefaultUrlRewrite": true,
           "seed": undefined,
           "username": "admin",
         },
@@ -189,10 +147,6 @@ exports[`install submit fail 1`] = `
     ],
   ],
   "results": Array [
-    Object {
-      "type": "return",
-      "value": Promise {},
-    },
     Object {
       "type": "return",
       "value": Promise {},

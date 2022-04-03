@@ -24,25 +24,8 @@ export default class InstallIndex extends Component {
     data: {},
   };
 
-  requestDefaultUrlRewrite = false;
-
   async componentDidMount() {
     await this.checkInstall(true);
-    await this.checkUrlRewrite();
-  }
-
-  async checkUrlRewrite() {
-    // TODO 考虑使用其他接口，减少重复调用，
-    $.get({
-      url: '../admin-api/install',
-      ignoreError: true,
-    }).then(({ret}) => {
-      if (ret && ret.isSuc()) {
-        this.requestDefaultUrlRewrite = true;
-      }
-    }).catch(() => {
-      // Ignore error
-    });
   }
 
   handleClickRetry = async () => {
@@ -93,8 +76,6 @@ export default class InstallIndex extends Component {
 
   handleSubmit = async (values) => {
     this.setState({loading: true});
-
-    values.requestDefaultUrlRewrite = this.requestDefaultUrlRewrite;
 
     try {
       const {ret} = await api.postCur({

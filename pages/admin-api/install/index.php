@@ -116,9 +116,6 @@ class () extends BaseController {
                 'password' => $req['dbPassword'],
                 'tablePrefix' => $req['dbTablePrefix'],
             ],
-            'request' => [
-                'defaultUrlRewrite' => $req['requestDefaultUrlRewrite'],
-            ],
         ]);
 
         Install::writeLockFile();

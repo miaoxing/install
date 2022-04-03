@@ -35,10 +35,6 @@ describe('install', () => {
           },
         }),
       })
-      // 测试 rewrite
-      .mockResolvedValueOnce({
-        ret: Ret.suc(),
-      })
       .mockResolvedValueOnce({
         ret: Ret.suc(),
       });
@@ -60,7 +56,7 @@ describe('install', () => {
     fireEvent.click(result.getByText('安 装'));
 
     await waitFor(() => {
-      expect($.http).toBeCalledTimes(3);
+      expect($.http).toBeCalledTimes(2);
     });
 
     expect($.http).toMatchSnapshot();
@@ -80,10 +76,6 @@ describe('install', () => {
             license: 'xxx',
           },
         }),
-      })
-      // 测试 rewrite
-      .mockResolvedValueOnce({
-        ret: Ret.suc(),
       })
       .mockResolvedValueOnce({
         ret: Ret.suc({
@@ -158,10 +150,6 @@ describe('install', () => {
           },
         }),
       })
-      // 测试 rewrite
-      .mockResolvedValueOnce({
-        ret: Ret.suc(),
-      })
       .mockRejectedValue(500);
 
     const result = render(<Index/>);
@@ -178,7 +166,7 @@ describe('install', () => {
     fireEvent.click(result.getByText('安 装'));
 
     await waitFor(() => {
-      expect($.http).toBeCalledTimes(3);
+      expect($.http).toBeCalledTimes(2);
     });
 
     expect($.http).toMatchSnapshot();
