@@ -55,13 +55,18 @@ class Install extends BaseService
             return;
         }
 
-        // 跳转去安装页面
-        $url = $this->url->to($this->installUrl);
-        if (
-            $this->req->getRequestUri() !== $url
-            && 0 !== strpos($this->req->getRouterPathInfo(), '/admin-api')
-        ) {
-            $this->res->redirect($url)->send();
+        if (!in_array($this->req->getRouterPathInfo(), ['/admin-api/js-config', '/admin-api/install'])) {
+            // TODO 简化逻辑
+            $this->res
+                ->setHeader('Access-Control-Allow-Origin', '*')
+                ->setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS')
+                ->setHeader('Access-Control-Allow-Headers', 'Origin, Content-Type, Authorization, X-Requested-With')
+                ->setHeader('Access-Control-Max-Age', 0)
+                ->send(err([
+                    'message' => '请先安装系统',
+                    'code' => 401,
+                    'next' => $this->url->to($this->installUrl),
+                ]));
             $this->exit();
             return;
         }
