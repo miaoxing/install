@@ -1,6 +1,6 @@
 {
   "name": "@miaoxing/install",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "private": true,
   "main": "index.js",
   "repository": "git@github.com:miaoxing/install.git",
@@ -16,7 +16,7 @@
     "@mxjs/box": "^0.3.2",
     "miaoxing": "^0.4.1",
     "@mxjs/api": "^0.1.8",
-    "@mxjs/a-form": "^0.3.4",
+    "@mxjs/a-form": "^0.3.5",
     "@emotion/react": "^11.1.5",
     "@mxjs/modal": "^0.2.2",
     "@ant-design/icons": "^4.6.2",

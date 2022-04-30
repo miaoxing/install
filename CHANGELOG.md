@@ -1,3 +1,22 @@
+## [0.3.6](https://github.com/miaoxing/install/compare/v0.3.5...v0.3.6) (2022-04-30)
+
+
+### Bug Fixes
+
+* **install:** 移除无效的 URL 重写检测功能 ([fd96acb](https://github.com/miaoxing/install/commit/fd96acba01f8b3c026065978732fc4ad90682df2))
+* **u, install:** 解决进入系统未跳转到安装页面 ([79adc8c](https://github.com/miaoxing/install/commit/79adc8c25f13b8a824b55eeb865545441a9c0de6))
+
+
+
+
+
+### Dependencies
+
+* **@mxjs/a-form:** upgrade from `0.3.4` to `0.3.5`
+* **@miaoxing/plugin:** upgrade from `0.8.1` to `0.8.2`
+* **@miaoxing/services:** upgrade from `0.5.2` to `0.5.3`
+* **@miaoxing/admin:** upgrade from `0.7.0` to `0.7.1`
+
 ## [0.3.5](https://github.com/miaoxing/install/compare/v0.3.4...v0.3.5) (2022-03-31)
 
 
