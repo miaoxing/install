@@ -55,7 +55,7 @@ class Install extends BaseService
             return;
         }
 
-        if (!in_array($this->req->getRouterPathInfo(), ['/admin-api/js-config', '/admin-api/install'])) {
+        if (!in_array($this->req->getRouterPathInfo(), ['/admin-api/js-config', '/admin-api/install'], true)) {
             // TODO 简化逻辑
             $this->res
                 ->setHeader('Access-Control-Allow-Origin', '*')
