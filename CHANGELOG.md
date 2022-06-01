@@ -1,3 +1,23 @@
+## [0.3.7](https://github.com/miaoxing/install/compare/v0.3.6...v0.3.7) (2022-06-01)
+
+
+
+
+
+### Dependencies
+
+* **@mxjs/box:** upgrade from `0.3.2` to `0.3.3`
+* **miaoxing:** upgrade from `0.4.1` to `0.4.2`
+* **@mxjs/api:** upgrade from `0.1.8` to `0.1.9`
+* **@mxjs/a-form:** upgrade from `0.3.5` to `0.3.6`
+* **@mxjs/modal:** upgrade from `0.2.2` to `0.2.3`
+* **@mxjs/app:** upgrade from `0.4.3` to `0.5.0`
+* **@miaoxing/dev:** upgrade from `8.1.0` to `8.1.1`
+* **@mxjs/test:** upgrade from `0.2.4` to `0.2.5`
+* **@miaoxing/plugin:** upgrade from `0.8.2` to `0.8.3`
+* **@miaoxing/services:** upgrade from `0.5.3` to `0.5.4`
+* **@miaoxing/admin:** upgrade from `0.7.1` to `0.7.2`
+
 ## [0.3.6](https://github.com/miaoxing/install/compare/v0.3.5...v0.3.6) (2022-04-30)
 
 
