@@ -10,6 +10,7 @@ import {FormItem} from '@mxjs/a-form';
 import {css, Global} from '@emotion/react';
 import {CheckCircleTwoTone, CloseCircleTwoTone} from '@ant-design/icons';
 import logo from '@miaoxing/admin/images/logo.svg';
+import {history} from '@mxjs/app';
 
 // TODO 读取主题
 const SucIcon = () => <CheckCircleTwoTone twoToneColor="#5cb85c" style={{fontSize: '1.5rem'}}/>;
@@ -93,7 +94,7 @@ export default class InstallIndex extends Component {
         content: ret.message,
         okText: '进入后台',
       });
-      window.location.href = ret.next;
+      window.location.href = history.createHref({pathname: $.url('admin/login')});
     } catch {
       // do nothing
     } finally {

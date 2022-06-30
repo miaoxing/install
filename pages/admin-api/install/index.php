@@ -7,7 +7,6 @@ use Miaoxing\Plugin\Service\Config;
 use Miaoxing\Plugin\Service\Jwt;
 use Miaoxing\Plugin\Service\Seeder;
 use Miaoxing\Plugin\Service\UserModel;
-use Miaoxing\Services\Service\Url;
 use Wei\Migration;
 use Wei\Password;
 use Wei\Schema;
@@ -126,9 +125,6 @@ class () extends BaseController {
             $this->plugin->install($plugin->getId());
         }
 
-        return suc([
-            'message' => '安装成功',
-            'next' => Url::to('admin/login'),
-        ]);
+        return suc('安装成功');
     }
 };
