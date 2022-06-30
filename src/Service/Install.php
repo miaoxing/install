@@ -14,7 +14,6 @@ use Wei\Time;
  * @mixin \ResMixin
  * @mixin \AppMixin
  * @mixin \EnvMixin
- * @mixin \UrlMixin
  * @mixin \LoggerMixin
  * @mixin \DbMixin
  */
@@ -65,7 +64,7 @@ class Install extends BaseService
                 ->send(err([
                     'message' => '请先安装系统',
                     'code' => 401,
-                    'next' => $this->url->to($this->installUrl),
+                    'next' => $this->installUrl,
                 ]));
             $this->exit();
             return;
