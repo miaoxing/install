@@ -1,3 +1,33 @@
+## [0.3.9](https://github.com/miaoxing/install/compare/v0.3.8...v0.3.9) (2022-07-01)
+
+
+### Bug Fixes
+
+* **install:** 安装后由前台生成跳转地址 ([3b48101](https://github.com/miaoxing/install/commit/3b481011f1c9601721778c2abae9119350e12c06))
+
+
+### Features
+
+* URL 地址改为只返回路径，以便前台生成完整地址 ([3b1f2a5](https://github.com/miaoxing/install/commit/3b1f2a54a2974d093490be12b18717ea45318ec5))
+
+
+
+
+
+### Dependencies
+
+* **@mxjs/box:** upgrade from `0.3.3` to `0.3.4`
+* **miaoxing:** upgrade from `0.4.2` to `0.4.3`
+* **@mxjs/api:** upgrade from `0.1.10` to `1.0.0`
+* **@mxjs/a-form:** upgrade from `0.3.7` to `1.0.0`
+* **@mxjs/modal:** upgrade from `0.2.3` to `0.2.4`
+* **@mxjs/app:** upgrade from `0.5.1` to `0.5.2`
+* **@miaoxing/dev:** upgrade from `8.1.1` to `8.1.2`
+* **@mxjs/test:** upgrade from `0.2.6` to `1.0.0`
+* **@miaoxing/plugin:** upgrade from `0.8.3` to `0.8.4`
+* **@miaoxing/services:** upgrade from `0.5.4` to `0.5.5`
+* **@miaoxing/admin:** upgrade from `0.7.3` to `0.8.0`
+
 ## [0.3.8](https://github.com/miaoxing/install/compare/v0.3.7...v0.3.8) (2022-06-06)
 
 
