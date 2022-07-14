@@ -34,15 +34,16 @@ class () extends BaseController {
         $ret = Install::checkInstall();
         $this->tie($ret);
 
-        $ret = V::key('dbHost', '数据库地址')
-            ->key('dbDbName', '数据库名称')->regex('/^[0-9a-z_]+$/i')
-            ->key('dbUser', '数据库用户名')
-            ->key('dbPassword', '数据库密码')
-            ->key('dbTablePrefix', '数据表前缀')
-            ->key('username', '管理员用户名')
-            ->key('password', '管理员密码')
-            ->key('agree', '《终端用户许可协议》')->required()->message('请同意%name%')
-            ->check($req);
+        $v = V::new();
+        $v->string('dbHost', '数据库地址');
+        $v->string('dbDbName', '数据库名称')->regex('/^[0-9a-z_]+$/i');
+        $v->string('dbUser', '数据库用户名');
+        $v->string('dbPassword', '数据库密码');
+        $v->string('dbTablePrefix', '数据表前缀');
+        $v->string('username', '管理员用户名');
+        $v->string('password', '管理员密码');
+        $v->bool('agree', '《终端用户许可协议》')->required()->message('请同意%name%');
+        $ret = $v->check($req);
         $this->tie($ret);
 
         // 检查数据库连接
