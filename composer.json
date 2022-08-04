@@ -38,11 +38,11 @@
       "install"
     ],
     "require-ci": {
-      "wei/wei": "twinh/wei as 0.12.x-dev",
+      "wei/wei": "twinh/wei as 0.13.x-dev",
       "miaoxing/dev": "miaoxing/dev as 8.x-dev",
       "miaoxing/phpstan-miaoxing": "miaoxing/phpstan-miaoxing as 1.x-dev",
-      "miaoxing/plugin": "miaoxing/plugin as 0.8.x-dev",
-      "miaoxing/services": "miaoxing/services as 0.5.x-dev"
+      "miaoxing/plugin": "miaoxing/plugin as 0.9.x-dev",
+      "miaoxing/services": "miaoxing/services as 0.6.x-dev"
     }
   }
 }
