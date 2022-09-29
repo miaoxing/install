@@ -10,7 +10,9 @@ import {FormItem} from '@mxjs/a-form';
 import {css, Global} from '@emotion/react';
 import {CheckCircleTwoTone, CloseCircleTwoTone} from '@ant-design/icons';
 import logo from '@miaoxing/admin/images/logo.svg';
+import bg from '@miaoxing/admin/images/bg.svg';
 import {history} from '@mxjs/app';
+import {ConfigConsumer} from '@miaoxing/app';
 
 // TODO 读取主题
 const SucIcon = () => <CheckCircleTwoTone twoToneColor="#5cb85c" style={{fontSize: '1.5rem'}}/>;
@@ -108,14 +110,18 @@ export default class InstallIndex extends Component {
 
   render() {
     return <Box flex>
-      <Global
-        styles={css`
-          body {
-            background: #f5f8fa url(https://image-10001577.image.myqcloud.com/uploads/3/20190602/15594729401485.jpg) no-repeat center center fixed;
-            background-size: cover;
-          }
-        `}
-      />
+      <ConfigConsumer>
+        {({page}) => (
+          <Global
+            styles={css`
+              body {
+                background: #f5f8fa url(${page.bg || bg}) no-repeat center center fixed;
+                background-size: cover;
+              }
+            `}
+          />
+        )}
+      </ConfigConsumer>
       <Box w={700} mx="auto" my12 p12 bgWhite>
         <Box mb4 textCenter>
           <Image h="50px" src={logo}/>
