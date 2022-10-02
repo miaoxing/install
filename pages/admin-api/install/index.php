@@ -34,7 +34,7 @@ class () extends BaseController {
         $ret = Install::checkInstall();
         $this->tie($ret);
 
-        $v = V::new();
+        $v = V::defaultNotEmpty();
         $v->string('dbHost', '数据库地址');
         $v->string('dbDbName', '数据库名称')->regex('/^[0-9a-z_]+$/i');
         $v->string('dbUser', '数据库用户名');
