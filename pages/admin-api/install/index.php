@@ -42,7 +42,7 @@ class () extends BaseController {
         $v->string('dbTablePrefix', '数据表前缀');
         $v->string('username', '管理员用户名');
         $v->string('password', '管理员密码');
-        $v->bool('agree', '《终端用户许可协议》')->required()->message('请同意%name%');
+        $v->true('agree', '《终端用户许可协议》', '请同意%name%');
         $ret = $v->check($req);
         $this->tie($ret);
 
