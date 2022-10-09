@@ -40,8 +40,8 @@ class () extends BaseController {
         $v->string('dbUser', '数据库用户名');
         $v->string('dbPassword', '数据库密码');
         $v->string('dbTablePrefix', '数据表前缀');
-        $v->string('username', '管理员用户名');
-        $v->string('password', '管理员密码');
+        $v->string('username', '管理员用户名', 3, 20);
+        $v->string('password', '管理员密码', 6, 50);
         $v->true('agree', '《终端用户许可协议》', '请同意%name%');
         $ret = $v->check($req);
         $this->tie($ret);
