@@ -35,11 +35,11 @@ class () extends BaseController {
         $this->tie($ret);
 
         $v = V::defaultNotEmpty();
-        $v->string('dbHost', '数据库地址');
-        $v->string('dbDbName', '数据库名称')->regex('/^[0-9a-z_]+$/i');
-        $v->string('dbUser', '数据库用户名');
-        $v->string('dbPassword', '数据库密码');
-        $v->string('dbTablePrefix', '数据表前缀');
+        $v->tinyChar('dbHost', '数据库地址');
+        $v->tinyChar('dbDbName', '数据库名称')->regex('/^[0-9a-z_]+$/i');
+        $v->tinyChar('dbUser', '数据库用户名');
+        $v->tinyChar('dbPassword', '数据库密码');
+        $v->tinyChar('dbTablePrefix', '数据表前缀');
         $v->string('username', '管理员用户名', 3, 20);
         $v->string('password', '管理员密码', 6, 50);
         $v->true('agree', '《终端用户许可协议》', '请同意%name%');
