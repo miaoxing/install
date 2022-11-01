@@ -1,3 +1,23 @@
+## [0.3.14](https://github.com/miaoxing/install/compare/v0.3.13...v0.3.14) (2022-11-01)
+
+
+### Bug Fixes
+
+* 校验增加长度检查 ([92fabc0](https://github.com/miaoxing/install/commit/92fabc0770315284ca91bb490611f087f23d8f1d))
+* **install:** 《终端用户许可协议》 校验错误 ([803c96d](https://github.com/miaoxing/install/commit/803c96d543115bae87b70ed420478003f93d9038))
+* **install:** 提交安装增加数据长度检查 ([89dff5f](https://github.com/miaoxing/install/commit/89dff5f82c2f7a6b8e502ffb68e00fab32605db1))
+
+
+
+
+
+### Dependencies
+
+* **@mxjs/a-form:** upgrade from `1.1.1` to `1.1.2`
+* **@miaoxing/plugin:** upgrade from `0.9.2` to `0.9.3`
+* **@miaoxing/services:** upgrade from `0.6.2` to `0.6.3`
+* **@miaoxing/admin:** upgrade from `0.9.2` to `0.9.3`
+
 ## [0.3.13](https://github.com/miaoxing/install/compare/v0.3.12...v0.3.13) (2022-09-30)
 
 
