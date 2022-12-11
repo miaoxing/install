@@ -179,7 +179,6 @@ final class InstallTest extends BaseTestCase
         $method->setAccessible(true);
         $method->invoke($install);
 
-        /** @var App $app */
         $app = wei()->app;
         $this->assertSame('1', $app->getId(), '能够读取到 id');
 
