@@ -1,6 +1,6 @@
 {
   "name": "@miaoxing/install",
-  "version": "0.3.18",
+  "version": "0.3.19",
   "private": true,
   "main": "index.js",
   "repository": "git@github.com:miaoxing/install.git",
