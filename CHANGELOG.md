@@ -1,3 +1,16 @@
+## [0.3.20](https://github.com/miaoxing/install/compare/v0.3.19...v0.3.20) (2023-04-15)
+
+
+
+
+
+### Dependencies
+
+* **@mxjs/a-form:** upgrade from `1.2.0` to `1.2.1`
+* **@miaoxing/plugin:** upgrade from `0.11.0` to `0.11.1`
+* **@miaoxing/services:** upgrade from `0.6.7` to `0.7.0`
+* **@miaoxing/admin:** upgrade from `0.10.0` to `0.10.1`
+
 ## [0.3.19](https://github.com/miaoxing/install/compare/v0.3.18...v0.3.19) (2023-03-01)
 
 
