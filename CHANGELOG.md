@@ -1,3 +1,28 @@
+## [0.3.23](https://github.com/miaoxing/install/compare/v0.3.22...v0.3.23) (2023-05-31)
+
+
+### Features
+
+* **antd5:** 更新 `antd` 到 `5.1.6` ([23fe239](https://github.com/miaoxing/install/commit/23fe239da8f8c7f45417aef3da47f3c04c94d61d))
+
+
+
+
+
+### Dependencies
+
+* **@mxjs/box:** upgrade from `0.3.6` to `0.3.7`
+* **miaoxing:** upgrade from `0.4.6` to `0.4.7`
+* **@mxjs/api:** upgrade from `1.0.3` to `1.0.4`
+* **@mxjs/a-form:** upgrade from `1.3.0` to `1.4.0`
+* **@mxjs/modal:** upgrade from `0.2.6` to `0.2.7`
+* **@mxjs/app:** upgrade from `0.5.4` to `0.5.5`
+* **@miaoxing/dev:** upgrade from `8.2.0` to `8.2.1`
+* **@mxjs/test:** upgrade from `1.0.3` to `1.0.4`
+* **@miaoxing/plugin:** upgrade from `0.11.2` to `0.12.0`
+* **@miaoxing/services:** upgrade from `0.7.1` to `0.7.2`
+* **@miaoxing/admin:** upgrade from `0.10.3` to `0.10.4`
+
 ## [0.3.22](https://github.com/miaoxing/install/compare/v0.3.21...v0.3.22) (2023-04-30)
 
 
