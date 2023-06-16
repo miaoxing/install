@@ -1,6 +1,6 @@
 <?php
 
-namespace MiaoxingTest\Install\Pages\AdminApi\Install;
+namespace MiaoxingTest\Install\Pages\Api\Admin\Install;
 
 use Miaoxing\Admin\Service\AdminModel;
 use Miaoxing\Install\Service\Install;

@@ -6,7 +6,7 @@ exports[`install check install fail 1`] = `
     Array [
       Object {
         "method": "get",
-        "url": "/admin-api/install",
+        "url": "/api/admin/install",
       },
     ],
   ],
@@ -44,19 +44,19 @@ exports[`install check reqs 1`] = `
     Array [
       Object {
         "method": "get",
-        "url": "/admin-api/install",
+        "url": "/api/admin/install",
       },
     ],
     Array [
       Object {
         "method": "get",
-        "url": "/admin-api/install",
+        "url": "/api/admin/install",
       },
     ],
     Array [
       Object {
         "method": "get",
-        "url": "/admin-api/install",
+        "url": "/api/admin/install",
       },
     ],
   ],
@@ -83,7 +83,7 @@ exports[`install install 1`] = `
     Array [
       Object {
         "method": "get",
-        "url": "/admin-api/install",
+        "url": "/api/admin/install",
       },
     ],
     Array [
@@ -101,7 +101,7 @@ exports[`install install 1`] = `
         },
         "loading": true,
         "method": "post",
-        "url": "/admin-api/install",
+        "url": "/api/admin/install",
       },
     ],
   ],
@@ -124,7 +124,7 @@ exports[`install submit fail 1`] = `
     Array [
       Object {
         "method": "get",
-        "url": "/admin-api/install",
+        "url": "/api/admin/install",
       },
     ],
     Array [
@@ -142,7 +142,7 @@ exports[`install submit fail 1`] = `
         },
         "loading": true,
         "method": "post",
-        "url": "/admin-api/install",
+        "url": "/api/admin/install",
       },
     ],
   ],

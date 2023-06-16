@@ -37,6 +37,7 @@
     "jest-preset-miaoxing": "miaoxing/jest-preset-miaoxing",
     "@mxjs/a-form": "miaoxing/mxjs-a-form",
     "@mxjs/a-clink": "miaoxing/mxjs-a-clink",
+    "@mxjs/app": "miaoxing/mxjs-app",
     "@mxjs/router": "miaoxing/mxjs-router",
     "@mxjs/test": "miaoxing/mxjs-test"
   }
