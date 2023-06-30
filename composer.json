@@ -8,9 +8,9 @@
   ],
   "license": "MIT",
   "require": {
-    "miaoxing/plugin": "^0.12.0",
-    "miaoxing/services": "^0.7.2",
-    "miaoxing/admin": "^0.10.4"
+    "miaoxing/plugin": "^0.12.1",
+    "miaoxing/services": "^0.7.3",
+    "miaoxing/admin": "^0.10.5"
   },
   "require-dev": {
     "miaoxing/dev": "^8.2.1"
