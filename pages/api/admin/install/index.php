@@ -91,12 +91,13 @@ class () extends BaseController {
         $this->logger->info('run migrations');
         Migration::migrate();
 
-        // 插入默认管理员
+        // 插入超级管理员
         $this->logger->info('create admin user');
         $user = UserModel::saveAttributes([
             'username' => $req['username'],
             'password' => Password::hash($req['password']),
             'isAdmin' => true,
+            'adminType' => UserModel::ADMIN_TYPE_SUPER,
         ]);
         AdminModel::save(['userId' => $user->id]);
 
