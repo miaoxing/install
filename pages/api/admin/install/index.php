@@ -10,10 +10,12 @@ use Miaoxing\Plugin\Service\UserModel;
 use Wei\Migration;
 use Wei\Password;
 use Wei\Schema;
+use Wei\Snowflake;
 use Wei\V;
 
 return new /**
  * @mixin SchemaMixin
+ * @mixin AppPropMixin
  */
 class () extends BaseController {
     protected $controllerAuth = false;
@@ -85,6 +87,8 @@ class () extends BaseController {
             return err(['数据表 %s 已存在，不能安装', $db->getTable('migrations')]);
         }
 
+        $this->setAppId();
+
         $ret = Jwt::generateDefaultKeys();
         $this->tie($ret);
 
@@ -128,5 +132,14 @@ class () extends BaseController {
         }
 
         return suc('安装成功');
+    }
+
+    protected function setAppId()
+    {
+        $id = Snowflake::next();
+        $model = $this->app->getModel();
+        $model->id = $id;
+        $this->app->setId($id);
+        $this->app->setModel($model);
     }
 };
