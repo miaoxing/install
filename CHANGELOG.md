@@ -1,3 +1,28 @@
+## [0.3.25](https://github.com/miaoxing/install/compare/v0.3.24...v0.3.25) (2023-07-31)
+
+
+### Features
+
+* **install:** 安装时生成新的 `appId` ([61a8c17](https://github.com/miaoxing/install/commit/61a8c177851e6aedf5c32eea6bfc1237bf115e90))
+
+
+
+
+
+### Dependencies
+
+* **@mxjs/box:** upgrade from `0.3.7` to `0.3.8`
+* **miaoxing:** upgrade from `0.4.7` to `0.4.8`
+* **@mxjs/api:** upgrade from `1.0.5` to `1.0.6`
+* **@mxjs/a-form:** upgrade from `1.4.1` to `1.5.0`
+* **@mxjs/modal:** upgrade from `0.2.7` to `0.2.8`
+* **@mxjs/app:** upgrade from `0.6.0` to `0.6.1`
+* **@miaoxing/dev:** upgrade from `8.2.1` to `8.2.2`
+* **@mxjs/test:** upgrade from `1.0.5` to `1.0.6`
+* **@miaoxing/plugin:** upgrade from `0.12.1` to `0.12.2`
+* **@miaoxing/services:** upgrade from `0.7.3` to `0.7.4`
+* **@miaoxing/admin:** upgrade from `0.10.5` to `0.10.6`
+
 ## [0.3.24](https://github.com/miaoxing/install/compare/v0.3.23...v0.3.24) (2023-06-30)
 
 
