@@ -2,7 +2,7 @@
 
 use Miaoxing\Admin\Service\AdminModel;
 use Miaoxing\Install\Service\Install;
-use Miaoxing\Plugin\BaseController;
+use Miaoxing\Plugin\BasePage;
 use Miaoxing\Plugin\Service\Config;
 use Miaoxing\Plugin\Service\Jwt;
 use Miaoxing\Plugin\Service\Seeder;
@@ -17,7 +17,7 @@ return new /**
  * @mixin SchemaMixin
  * @mixin AppPropMixin
  */
-class () extends BaseController {
+class () extends BasePage {
     protected $controllerAuth = false;
 
     public function get()
