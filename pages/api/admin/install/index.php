@@ -33,8 +33,7 @@ class () extends BasePage {
     public function post($req)
     {
         // 检查是否已安装
-        $ret = Install::checkInstall();
-        $this->tie($ret);
+        Install::checkInstall()->assert();
 
         $v = V::defaultNotEmpty();
         $v->tinyChar('dbHost', '数据库地址');
@@ -45,8 +44,7 @@ class () extends BasePage {
         $v->string('username', '管理员用户名', 3, 20);
         $v->string('password', '管理员密码', 6, 50);
         $v->true('agree', '《终端用户许可协议》', '请同意%name%');
-        $ret = $v->check($req);
-        $this->tie($ret);
+        $v->assert($req);
 
         // 检查数据库连接
         if (false !== strpos($req['dbHost'], ':')) {
@@ -89,8 +87,7 @@ class () extends BasePage {
 
         $this->setAppId();
 
-        $ret = Jwt::generateDefaultKeys();
-        $this->tie($ret);
+        Jwt::generateDefaultKeys()->assert();
 
         $this->logger->info('run migrations');
         Migration::migrate();
