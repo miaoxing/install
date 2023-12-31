@@ -1,6 +1,6 @@
 {
   "name": "@miaoxing/install",
-  "version": "0.3.29",
+  "version": "0.3.30",
   "private": true,
   "main": "index.js",
   "repository": "git@github.com:miaoxing/install.git",
@@ -13,19 +13,19 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "antd": "~5.1.6",
-    "@mxjs/box": "^0.3.10",
-    "miaoxing": "^0.4.10",
-    "@mxjs/api": "^1.0.8",
-    "@mxjs/a-form": "^2.0.1",
+    "@mxjs/box": "^0.3.11",
+    "miaoxing": "^0.4.11",
+    "@mxjs/api": "^1.0.9",
+    "@mxjs/a-form": "^2.0.2",
     "@emotion/react": "^11.1.5",
-    "@mxjs/modal": "^0.2.10",
+    "@mxjs/modal": "^0.2.11",
     "@ant-design/icons": "^4.6.2",
-    "@mxjs/app": "^0.6.3"
+    "@mxjs/app": "^0.6.4"
   },
   "devDependencies": {
-    "@miaoxing/dev": "^8.2.4",
+    "@miaoxing/dev": "^9.0.0",
     "@testing-library/react": "^11.2.6",
-    "@mxjs/test": "^1.0.8"
+    "@mxjs/test": "^1.0.9"
   },
   "jest": {
     "preset": "jest-preset-miaoxing"
