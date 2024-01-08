@@ -1,3 +1,23 @@
+## [0.3.31](https://github.com/miaoxing/install/compare/v0.3.30...v0.3.31) (2024-01-08)
+
+
+
+
+
+### Dependencies
+
+* **@mxjs/box:** upgrade from `0.3.11` to `0.3.12`
+* **miaoxing:** upgrade from `0.4.11` to `0.4.12`
+* **@mxjs/api:** upgrade from `1.0.9` to `1.0.10`
+* **@mxjs/a-form:** upgrade from `2.0.2` to `2.0.3`
+* **@mxjs/modal:** upgrade from `0.2.11` to `0.2.12`
+* **@mxjs/app:** upgrade from `0.6.4` to `0.6.5`
+* **@miaoxing/dev:** upgrade from `9.0.0` to `9.1.0`
+* **@mxjs/test:** upgrade from `1.0.9` to `1.0.10`
+* **@miaoxing/plugin:** upgrade from `0.14.1` to `0.14.2`
+* **@miaoxing/services:** upgrade from `0.8.3` to `0.8.4`
+* **@miaoxing/admin:** upgrade from `0.11.4` to `0.11.5`
+
 ## [0.3.30](https://github.com/miaoxing/install/compare/v0.3.29...v0.3.30) (2023-12-31)
 
 
