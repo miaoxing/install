@@ -66,7 +66,7 @@ class () extends BasePage {
         ]);
         try {
             $db->reconnect();
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return err(['连接数据库失败：%s', $e->getMessage()]);
         }
 
@@ -74,7 +74,7 @@ class () extends BasePage {
         if (!Schema::hasDatabase($req['dbDbName'])) {
             try {
                 Schema::createDatabase($req['dbDbName']);
-            } catch (\Exception $e) {
+            } catch (Exception $e) {
                 return err(['创建数据库失败，请手动创建：%s', $e->getMessage()]);
             }
         }
