@@ -2,8 +2,8 @@
  * @layout false
  */
 import {Component} from 'react';
-import {Form, Button, Checkbox, Divider, List, Row, Col, Modal} from 'antd';
-import {Box, Image} from '@mxjs/box';
+import { Form, Button, Checkbox, Divider, List, Row, Col, Modal, Card } from 'antd';
+import {Box, Image} from '@mxjs/a-box';
 import $, {Ret} from 'miaoxing';
 import api from '@mxjs/api';
 import {FormItem} from '@mxjs/a-form';
@@ -70,10 +70,10 @@ export default class InstallIndex extends Component {
 
     Modal.info({
       title,
-      content: <Box overflowYScroll maxH="calc(100vh - 200px)" dangerouslySetInnerHTML={{__html: content}}/>,
+      content: <Box overflowY="scroll" maxH="calc(100vh - 200px)" dangerouslySetInnerHTML={{__html: content}}/>,
       width: 500,
       centered: true,
-      icon: false,
+      icon: null,
     });
   };
 
@@ -109,7 +109,7 @@ export default class InstallIndex extends Component {
   }
 
   render() {
-    return <Box flex>
+    return <Box display="flex">
       <ConfigConsumer>
         {({page}) => (
           <Global
@@ -122,11 +122,11 @@ export default class InstallIndex extends Component {
           />
         )}
       </ConfigConsumer>
-      <Box w={700} mx="auto" my12 p12 bgWhite>
-        <Box mb4 textCenter>
+      <Box as={Card} w={700} mx="auto" my={12} p={6}>
+        <Box mb={4} textAlign="center">
           <Image h="50px" src={logo}/>
         </Box>
-        <Box mb12 textCenter textLG gray500>
+        <Box mb={12} textAlign="center" fontSize="lg">
           安装
         </Box>
 
