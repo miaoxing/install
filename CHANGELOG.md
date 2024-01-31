@@ -1,3 +1,21 @@
+## [0.3.32](https://github.com/miaoxing/install/compare/v0.3.31...v0.3.32) (2024-01-31)
+
+
+### Features
+
+* 更新 `react` 支持 18 ([017240a](https://github.com/miaoxing/install/commit/017240a4d1e46f032b7d5dc68c018083a5e9826a))
+
+
+
+
+
+### Dependencies
+
+* **@mxjs/a-box:** upgrade from `1.0.0` to `1.1.0`
+* **@mxjs/a-form:** upgrade from `2.0.3` to `2.1.0`
+* **@mxjs/modal:** upgrade from `0.2.12` to `0.2.13`
+* **@miaoxing/admin:** upgrade from `0.11.5` to `0.12.0`
+
 ## [0.3.31](https://github.com/miaoxing/install/compare/v0.3.30...v0.3.31) (2024-01-08)
 
 
