@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "@miaoxing/dev": "^9.1.0",
-    "@testing-library/react": "^11.2.6",
+    "@testing-library/react": "^14",
     "@mxjs/test": "^1.0.10"
   },
   "jest": {
