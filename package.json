@@ -12,14 +12,14 @@
   "dependencies": {
     "react": ">=16.13.1",
     "react-dom": ">=16.13.1",
-    "antd": "~5.1.6",
+    "antd": "~5.13",
     "@mxjs/a-box": "^1.1.0",
     "miaoxing": "^0.4.12",
     "@mxjs/api": "^1.0.10",
     "@mxjs/a-form": "^2.1.0",
     "@emotion/react": "^11.1.5",
     "@mxjs/modal": "^0.2.13",
-    "@ant-design/icons": "^4.6.2",
+    "@ant-design/icons": "^5",
     "@mxjs/app": "^0.6.5"
   },
   "devDependencies": {
