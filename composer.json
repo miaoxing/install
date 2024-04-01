@@ -40,7 +40,7 @@
     "require-ci": {
       "wei/wei": "twinh/wei as 0.17.x-dev",
       "miaoxing/dev": "miaoxing/dev as 8.x-dev",
-      "miaoxing/phpstan-miaoxing": "miaoxing/phpstan-miaoxing as 2.x-dev",
+      "miaoxing/phpstan-miaoxing": "miaoxing/phpstan-miaoxing as 3.x-dev",
       "miaoxing/plugin": "miaoxing/plugin as 0.14.x-dev",
       "miaoxing/services": "miaoxing/services as 0.9.x-dev"
     }
