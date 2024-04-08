@@ -12,7 +12,7 @@ import {CheckCircleTwoTone, CloseCircleTwoTone} from '@ant-design/icons';
 import logo from '@miaoxing/admin/images/logo.svg';
 import bg from '@miaoxing/admin/images/bg.svg';
 import {history} from '@mxjs/app';
-import {ConfigConsumer} from '@miaoxing/app';
+import {ConfigConsumer} from '@mxjs/config';
 
 // TODO 读取主题
 const SucIcon = () => <CheckCircleTwoTone twoToneColor="#5cb85c" style={{fontSize: '1.5rem'}}/>;
