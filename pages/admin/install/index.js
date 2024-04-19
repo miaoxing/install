@@ -11,7 +11,6 @@ import {css, Global} from '@emotion/react';
 import {CheckCircleTwoTone, CloseCircleTwoTone} from '@ant-design/icons';
 import logo from '@miaoxing/admin/images/logo.svg';
 import bg from '@miaoxing/admin/images/bg.svg';
-import {history} from '@mxjs/app';
 import {ConfigConsumer} from '@mxjs/config';
 
 // TODO 读取主题
@@ -96,7 +95,7 @@ export default class InstallIndex extends Component {
         content: ret.message,
         okText: '进入后台',
       });
-      window.location.href = history.createHref({pathname: $.url('admin/login')});
+      $.to('admin/login');
     } catch {
       // do nothing
     } finally {
