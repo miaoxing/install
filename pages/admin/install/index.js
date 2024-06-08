@@ -103,10 +103,6 @@ export default class InstallIndex extends Component {
     }
   };
 
-  handleOk = () => {
-    this.setState({isModalVisible: false});
-  }
-
   render() {
     return <Box display="flex">
       <ConfigConsumer>
