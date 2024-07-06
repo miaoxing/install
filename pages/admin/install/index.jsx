@@ -3,7 +3,6 @@
  */
 import {Component} from 'react';
 import { Form, Button, Checkbox, Divider, List, Row, Col, Modal, Card } from 'antd';
-import {Box, Image} from '@mxjs/a-box';
 import $, {Ret} from 'miaoxing';
 import api from '@mxjs/api';
 import {FormItem} from '@mxjs/a-form';
@@ -69,7 +68,7 @@ export default class InstallIndex extends Component {
 
     Modal.info({
       title,
-      content: <Box overflowY="scroll" maxH="calc(100vh - 200px)" dangerouslySetInnerHTML={{__html: content}}/>,
+      content: <div className="overflow-y-scroll max-h-[calc(100vh-200px)]" dangerouslySetInnerHTML={{__html: content}}/>,
       width: 500,
       centered: true,
       icon: null,
@@ -104,7 +103,7 @@ export default class InstallIndex extends Component {
   };
 
   render() {
-    return <Box display="flex">
+    return <div className="flex">
       <ConfigConsumer>
         {({page}) => (
           <Global
@@ -117,13 +116,13 @@ export default class InstallIndex extends Component {
           />
         )}
       </ConfigConsumer>
-      <Box as={Card} w={700} mx="auto" my={12} p={6}>
-        <Box mb={4} textAlign="center">
-          <Image h="50px" src={logo}/>
-        </Box>
-        <Box mb={12} textAlign="center" fontSize="lg">
+      <Card className="w-[700px] mx-auto my-12 p-6">
+        <div className="mb-4 text-center">
+          <img className="inline h-12" src={logo} alt="Logo"/>
+        </div>
+        <div className="mb-12 text-center text-lg">
           安装
-        </Box>
+        </div>
 
         {!this.state.showForm && <>
           <List
@@ -205,7 +204,7 @@ export default class InstallIndex extends Component {
             </Button>
           </Form.Item>
         </Form>}
-      </Box>
-    </Box>;
+      </Card>
+    </div>;
   }
 }
