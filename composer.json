@@ -44,5 +44,10 @@
       "miaoxing/plugin": "miaoxing/plugin as 0.15.x-dev",
       "miaoxing/services": "miaoxing/services as 0.9.x-dev"
     }
+  },
+  "scripts": {
+    "post-update-cmd": [
+      "@php wei g:auto-completion"
+    ]
   }
 }
