@@ -1,3 +1,26 @@
+## [0.3.39](https://github.com/miaoxing/install/compare/v0.3.38...v0.3.39) (2024-07-31)
+
+
+### Features
+
+* Box 组件改为 tailwind 类名 ([a34bc4f](https://github.com/miaoxing/install/commit/a34bc4f8920a9dc3a48c587e6771387f589f2131))
+
+
+
+
+
+### Dependencies
+
+* **miaoxing:** upgrade from `0.4.15` to `0.4.16`
+* **@mxjs/api:** upgrade from `1.1.0` to `1.1.1`
+* **@mxjs/a-form:** upgrade from `3.0.2` to `4.0.0`
+* **@mxjs/app:** upgrade from `0.8.0` to `0.8.1`
+* **@miaoxing/dev:** upgrade from `9.1.1` to `9.1.2`
+* **@mxjs/test:** upgrade from `2.0.0` to `2.0.1`
+* **@miaoxing/plugin:** upgrade from `0.15.0` to `0.15.1`
+* **@miaoxing/services:** upgrade from `0.9.3` to `0.9.4`
+* **@miaoxing/admin:** upgrade from `0.13.2` to `0.14.0`
+
 ## [0.3.38](https://github.com/miaoxing/install/compare/v0.3.37...v0.3.38) (2024-06-30)
 
 
