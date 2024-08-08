@@ -12,7 +12,7 @@
   "dependencies": {
     "react": ">=16.13.1",
     "react-dom": ">=16.13.1",
-    "antd": "~5.13",
+    "antd": "~5.19",
     "miaoxing": "^0.4.18",
     "@mxjs/api": "^1.1.3",
     "@mxjs/a-form": "^4.0.2",
