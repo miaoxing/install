@@ -17,7 +17,7 @@ return new /**
  * @mixin SchemaMixin
  * @mixin AppPropMixin
  */
-class () extends BasePage {
+class extends BasePage {
     protected $controllerAuth = false;
 
     public function get()
