@@ -1,3 +1,28 @@
+## [0.3.42](https://github.com/miaoxing/install/compare/v0.3.41...v0.3.42) (2024-09-01)
+
+
+### Features
+
+* **install:** 更新图片为引用 admin 导出的资源 ([dd0a857](https://github.com/miaoxing/install/commit/dd0a857daa29ff7505da02b736f1f484ec082b2e))
+* 插件增加 wei 命令行入口 ([b589866](https://github.com/miaoxing/install/commit/b5898663e584a8fd8f55a6d20f6629892d915d12))
+* 更新 `antd` 到 `~5.19` ([2f8cad9](https://github.com/miaoxing/install/commit/2f8cad98ae59e187c74d0d6bd1a87ecb6df7e030))
+
+
+
+
+
+### Dependencies
+
+* **miaoxing:** upgrade from `0.4.18` to `0.4.19`
+* **@mxjs/api:** upgrade from `1.1.3` to `1.1.4`
+* **@mxjs/a-form:** upgrade from `4.0.2` to `4.1.0`
+* **@mxjs/app:** upgrade from `0.8.2` to `0.8.3`
+* **@miaoxing/dev:** upgrade from `9.1.3` to `9.2.0`
+* **@mxjs/test:** upgrade from `2.0.3` to `2.0.4`
+* **@miaoxing/plugin:** upgrade from `0.15.2` to `0.16.0`
+* **@miaoxing/services:** upgrade from `0.9.5` to `0.9.6`
+* **@miaoxing/admin:** upgrade from `0.15.1` to `0.15.2`
+
 ## [0.3.41](https://github.com/miaoxing/install/compare/v0.3.40...v0.3.41) (2024-08-03)
 
 
