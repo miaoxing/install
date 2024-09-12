@@ -118,7 +118,7 @@ export default class InstallIndex extends Component {
       </ConfigConsumer>
       <Card className="w-[700px] mx-auto my-12 p-6">
         <div className="mb-4 text-center">
-          <img className="inline h-12" src={defaultLogo} alt="Logo"/>
+          <img className="inline h-16" src={defaultLogo} alt="Logo"/>
         </div>
         <div className="mb-12 text-center text-lg">
           安装
