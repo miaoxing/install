@@ -109,7 +109,7 @@ export default class InstallIndex extends Component {
           <Global
             styles={css`
               body {
-                background: #f5f8fa url(${page?.bg || defaultEntryBg}) no-repeat center center fixed;
+                background: #f5f8fa url(${page?.entryBg || defaultEntryBg}) no-repeat center center fixed;
                 background-size: cover;
               }
             `}
