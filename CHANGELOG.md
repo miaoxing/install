@@ -1,3 +1,22 @@
+## [0.3.43](https://github.com/miaoxing/install/compare/v0.3.42...v0.3.43) (2024-09-30)
+
+
+### Features
+
+* **admin:** 添加入口背景图配置 ([a734332](https://github.com/miaoxing/install/commit/a734332bad19f32a54a92c7fa5423db0d18bd254))
+* 加大 logo ([529c2d9](https://github.com/miaoxing/install/commit/529c2d9ad479ad16816df487d99d5574c6200d0e))
+
+
+
+
+
+### Dependencies
+
+* **@mxjs/a-form:** upgrade from `4.1.0` to `4.1.1`
+* **@miaoxing/plugin:** upgrade from `0.16.0` to `0.16.1`
+* **@miaoxing/services:** upgrade from `0.9.6` to `0.9.7`
+* **@miaoxing/admin:** upgrade from `0.15.2` to `0.16.0`
+
 ## [0.3.42](https://github.com/miaoxing/install/compare/v0.3.41...v0.3.42) (2024-09-01)
 
 
