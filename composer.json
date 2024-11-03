@@ -10,7 +10,7 @@
   "require": {
     "miaoxing/plugin": "^0.17.0",
     "miaoxing/services": "^0.9.8",
-    "miaoxing/admin": "^0.16.1"
+    "miaoxing/admin": "^0.16.2"
   },
   "require-dev": {
     "miaoxing/dev": "^9.2.0"

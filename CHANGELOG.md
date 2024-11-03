@@ -1,3 +1,13 @@
+## [0.3.45](https://github.com/miaoxing/install/compare/v0.3.44...v0.3.45) (2024-11-03)
+
+
+
+
+
+### Dependencies
+
+* **@miaoxing/admin:** upgrade from `0.16.1` to `0.16.2`
+
 ## [0.3.44](https://github.com/miaoxing/install/compare/v0.3.43...v0.3.44) (2024-11-01)
 
 
