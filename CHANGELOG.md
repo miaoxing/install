@@ -1,3 +1,16 @@
+## [0.3.46](https://github.com/miaoxing/install/compare/v0.3.45...v0.3.46) (2024-11-30)
+
+
+
+
+
+### Dependencies
+
+* **@mxjs/a-form:** upgrade from `5.0.0` to `5.1.0`
+* **@miaoxing/plugin:** upgrade from `0.17.0` to `0.17.1`
+* **@miaoxing/services:** upgrade from `0.9.8` to `0.9.9`
+* **@miaoxing/admin:** upgrade from `0.16.2` to `0.16.3`
+
 ## [0.3.45](https://github.com/miaoxing/install/compare/v0.3.44...v0.3.45) (2024-11-03)
 
 
@@ -211,7 +224,7 @@
 
 ### Features
 
-* 更新 antd, antd icons 版本 ([bee80ea](https://github.com/miaoxing/install/commit/bee80ea9078ee0a2a91595f0deea982bd3a0e7b6))
+* 更新 antd, antd icons 版本 ([ce74f9d](https://github.com/miaoxing/install/commit/ce74f9d4a5679e89b538f94706f9b48631ba1fca))
 
 
 
