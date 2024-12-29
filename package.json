@@ -10,8 +10,8 @@
     "plugins/*"
   ],
   "dependencies": {
-    "react": ">=16.13.1",
-    "react-dom": ">=16.13.1",
+    "react": ">=16.13.1 <19",
+    "react-dom": ">=16.13.1 <19",
     "antd": "~5.19",
     "miaoxing": "^0.4.19",
     "@mxjs/api": "^1.1.5",
