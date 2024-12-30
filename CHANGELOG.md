@@ -1,3 +1,26 @@
+## [0.3.47](https://github.com/miaoxing/install/compare/v0.3.46...v0.3.47) (2024-12-30)
+
+
+### Bug Fixes
+
+* 限制 react 版本低于 19，避免测试失败 ([111602c](https://github.com/miaoxing/install/commit/111602c1bc4d07a2618722620b965de5550fd864))
+
+
+
+
+
+### Dependencies
+
+* **miaoxing:** upgrade from `0.4.19` to `0.4.20`
+* **@mxjs/api:** upgrade from `1.1.5` to `1.1.6`
+* **@mxjs/a-form:** upgrade from `5.1.0` to `5.2.0`
+* **@mxjs/app:** upgrade from `0.8.4` to `0.8.5`
+* **@miaoxing/dev:** upgrade from `9.2.0` to `9.3.0`
+* **@mxjs/test:** upgrade from `2.0.5` to `2.0.6`
+* **@miaoxing/plugin:** upgrade from `0.17.1` to `0.17.2`
+* **@miaoxing/services:** upgrade from `0.9.9` to `0.9.10`
+* **@miaoxing/admin:** upgrade from `0.16.3` to `0.17.0`
+
 ## [0.3.46](https://github.com/miaoxing/install/compare/v0.3.45...v0.3.46) (2024-11-30)
 
 
