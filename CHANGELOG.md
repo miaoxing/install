@@ -1,3 +1,15 @@
+## [0.3.50](https://github.com/miaoxing/install/compare/v0.3.49...v0.3.50) (2025-05-01)
+
+
+
+
+
+### Dependencies
+
+* **@miaoxing/plugin:** upgrade from `0.17.4` to `0.17.5`
+* **@miaoxing/services:** upgrade from `0.9.12` to `0.9.13`
+* **@miaoxing/admin:** upgrade from `0.17.2` to `0.17.3`
+
 ## [0.3.49](https://github.com/miaoxing/install/compare/v0.3.48...v0.3.49) (2025-02-02)
 
 
